@@ -9,7 +9,7 @@ const fortune_engl = (
 ) => {
   let child =
     numch === 0 ? "no kids" : numch === 1 ? `${numch} kid` : `${numch} kids`;
-  let sqm = 
+  let sqm =
     area === 1 ? ` of ${area} square meter` : area > 1 ? ` of ${area} square meters` : "";
   return `You will be ${job} ${loc}, married to ${partn} with ${child} living ${house}${sqm}.`;
 };
@@ -28,16 +28,16 @@ const fortune_germ = (
     area === 1 ? " mit einem Quadratmeter Wohnfläche" : area > 1 ? ` mit ${area} Quadratmetern Wohnfläche` : "";
   let job_ft;
   let loc_ft;
-  if(/von/.test(job) && (loc === "den Vereinigten Staaten von Amerika" || loc === "der Türkei")){
-    job_ft = job.substr(0,(job.length - 4));
-    loc_ft = loc.replace("den","der");
-  }else if (/von/.test(job) && loc === "Vatikan"){
-    job_ft = job.replace("von","des");
-    loc_ft = loc.padEnd(8,"s");
-  }else if (/ in/.test(job) && loc === "Vatikan"){
-    job_ft = job.replace(" in"," im");
+  if (/von/.test(job) && (loc === "den Vereinigten Staaten von Amerika" || loc === "der Türkei")) {
+    job_ft = job.substr(0, (job.length - 4));
+    loc_ft = loc.replace("den", "der");
+  } else if (/von/.test(job) && loc === "Vatikan") {
+    job_ft = job.replace("von", "des");
+    loc_ft = loc.padEnd(8, "s");
+  } else if (/ in/.test(job) && loc === "Vatikan") {
+    job_ft = job.replace(" in", " im");
     loc_ft = loc;
-  }else{
+  } else {
     job_ft = job;
     loc_ft = loc;
   }
@@ -45,7 +45,7 @@ const fortune_germ = (
 };
 // Functions to create random values
 const randomize = MyArray => Math.floor(Math.random() * MyArray.length);
-const randomvalue = (min,max) => Math.floor(Math.random() * (max - min) + min);
+const randomvalue = (min, max) => Math.floor(Math.random() * (max - min) + min);
 // Arrays for possible solutions (english)
 let jobs_engl = [
   "a doctor in",
@@ -195,100 +195,137 @@ let houses_germ = [
   "in einem Stall",
   "auf der Straße"
 ];
-const lang = navigator.language;
-let jobnr;
-let geonr;
-let partnr;
-let housenr;
-let house;
-switch(lang){
- case "de":
- case "de-DE":
- case "de-AT":
-   jobnr = randomize(jobs_germ);
-   geonr = randomize(geolocs_germ);
-   partnr = randomize(partners_germ);
-   housenr = randomize(houses_germ);
-   house = houses_germ[housenr];
-   break;
- default:
-   jobnr = randomize(jobs_engl);
-   geonr = randomize(geolocs_engl);
-   partnr = randomize(partners_engl);
-   housenr = randomize(houses_engl);
-   house = houses_engl[housenr];
+function newFortune() {
+  let LangSel = document.getElementById("language").value;
+  let lang;
+  switch (LangSel) {
+    case "from":
+      lang = navigator.language;
+      break;
+    case "de":
+      lang = "de";
+      break;
+    case "en":
+      lang = "en";
+      break;
+  }
+  let jobnr;
+  let geonr;
+  let partnr;
+  let housenr;
+  let house;
+  switch (lang) {
+    case "de":
+    case "de-DE":
+    case "de-AT":
+      jobnr = randomize(jobs_germ);
+      geonr = randomize(geolocs_germ);
+      partnr = randomize(partners_germ);
+      housenr = randomize(houses_germ);
+      house = houses_germ[housenr];
+      break;
+    default:
+      jobnr = randomize(jobs_engl);
+      geonr = randomize(geolocs_engl);
+      partnr = randomize(partners_engl);
+      housenr = randomize(houses_engl);
+      house = houses_engl[housenr];
+  }
+  let childnr = randomvalue(0, 20);
+  // Adjust house size to the "house"
+  let minimum;
+  let maximum;
+  switch (house) {
+    case "in einem Haus":
+    case "in a house":
+      minimum = 50;
+      maximum = 201;
+      break;
+    case "in einer Wohnung":
+    case "in a flat":
+      minimum = 30;
+      maximum = 101;
+      break;
+    case "in einem Penthouse":
+    case "in a penthouse":
+      minimum = 500;
+      maximum = 1001;
+      break;
+    case "in einer öffentlichen Toilette":
+    case "in a public restroom":
+      minimum = 10;
+      maximum = 41;
+      break;
+    case "in einem Schloss":
+    case "in a palace":
+      minimum = 500;
+      maximum = 6001;
+      break;
+    case "in einem Bordell":
+    case "in a whorehouse":
+      minimum = 50;
+      maximum = 3001;
+      break;
+    case "in einer Gefängniszelle":
+    case "in a prison cell":
+      minimum = 8;
+      maximum = 11;
+      break;
+    case "in einem Zelt":
+    case "in a tent":
+      minimum = 4;
+      maximum = 21;
+      break;
+    case "in einem Wohnwagen":
+    case "in a trailer":
+      minimum = 8;
+      maximum = 21;
+      break;
+    case "in einer Telefonzelle":
+    case "in a phone box":
+      minimum = 1;
+      maximum = 5;
+      break;
+    case "in einem Stall":
+    case "in a stable":
+      minimum = 30;
+      maximum = 5001;
+      break;
+    case "auf der Straße":
+    case "on the street":
+      minimum = 0;
+      maximum = 1;
+      break;
+    default:
+      minimum = 1;
+      maximum = 1000;
+  }
+  let areanr = randomvalue(minimum, maximum);
+  //Function call and output to the HTML
+  switch (lang) {
+    case "de":
+    case "de-AT":
+    case "de-DE":
+      document.getElementById("fortune").innerHTML = fortune_germ(
+        childnr,
+        partners_germ[partnr],
+        geolocs_germ[geonr],
+        houses_germ[housenr],
+        jobs_germ[jobnr],
+        areanr
+      );
+      break;
+    default:
+      document.getElementById("fortune").innerHTML = fortune_engl(
+        childnr,
+        partners_engl[partnr],
+        geolocs_engl[geonr],
+        houses_engl[housenr],
+        jobs_engl[jobnr],
+        areanr
+      );
+  }
 }
-let childnr = randomvalue(0,20);
-let minimum; 
-let maximum;
-// Adjust house size to the "house"
-switch(house){
-  case "in einem Haus":
-  case "in a house":
-    minimum = 50;
-    maximum = 201;
-    break;
-  case "in einer Wohnung":
-  case "in a flat":
-    minimum = 30;
-    maximum = 101;
-    break;
-  case "in einem Penthouse":
-  case "in a penthouse":
-    minimum = 500;
-    maximum = 1001;
-    break;
-  case "in einer öffentlichen Toilette":
-  case "in a public restroom":
-    minimum = 10;
-    maximum = 41;
-    break;
-  case "in einem Schloss":
-  case "in a palace":
-    minimum = 500;
-    maximum = 6001;
-    break;
-  case "in einem Bordell":
-  case "in a whorehouse":
-    minimum = 50;
-    maximum = 3001;
-    break;
-  case "in einer Gefängniszelle":
-  case "in a prison cell":
-    minimum = 8;
-    maximum = 11;
-    break;
-  case "in einem Zelt":
-  case "in a tent":
-    minimum = 4;
-    maximum = 21;
-    break;
-  case "in einem Wohnwagen":
-  case "in a trailer":
-    minimum = 8;
-    maximum = 21;
-    break;
-  case "in einer Telefonzelle":
-  case "in a phone box":
-    minimum = 1;
-    maximum = 5;
-    break;
-  case "in einem Stall":
-  case "in a stable":
-    minimum = 30;
-    maximum = 5001;
-    break;
-  case "auf der Straße":
-  case "on the street":
-    minimum = 0;
-    maximum = 1;
-    break;
-  default:
-    minimum = 1;
-    maximum = 1000;
-}
-let areanr = randomvalue(minimum, maximum);
-
 // old prompt -> deprecated
 /*let userJob = prompt("Desired Job?", "Doctor");
 let userLoc = prompt("Where?", "Aerospace");
@@ -301,27 +338,3 @@ console.log(fortune(userChild, userPart, userLoc, userJob, userArea));
  alert(
    fortune(childnr, partners[partnr], geolocs[geonr], jobs[jobnr], areanr)
 );*/
-//Function call and output to the HTML
-switch(lang){
- case "de":
- case "de-AT":
- case "de-DE":
-   document.getElementById("fortune").innerHTML = fortune_germ(
-     childnr,
-     partners_germ[partnr],
-     geolocs_germ[geonr],
-     houses_germ[housenr],
-     jobs_germ[jobnr],
-     areanr
-   );
-   break;
- default:
-   document.getElementById("fortune").innerHTML = fortune_engl(
-     childnr,
-     partners_engl[partnr],
-     geolocs_engl[geonr],
-     houses_engl[housenr],
-     jobs_engl[jobnr],
-     areanr
-   );
-}
