@@ -1,4 +1,4 @@
-
+// Function to create the fortune sentence
 const fortune = (
   numch = 0,
   partn = "Jane Doe",
@@ -13,9 +13,10 @@ const fortune = (
     area === 1 ? ` of ${area} square meter` : area > 1 ? ` of ${area} square meters` : "";
   return `You will be ${job} ${loc}, married to ${partn} with ${child} living ${house}${sqm}.`;
 };
-
+// Functions to create random values
 const randomize = MyArray => Math.floor(Math.random() * MyArray.length);
 const randomvalue = (min,max) => Math.floor(Math.random() * (max - min) + min);
+// Arrays for possible solutions
 let jobs = [
   "a doctor in",
   "a drug dealer in",
@@ -88,9 +89,10 @@ let jobnr = randomize(jobs);
 let geonr = randomize(geolocs);
 let partnr = randomize(partners);
 let housenr = randomize(houses);
-let childnr = Math.floor(20 * Math.random());
+let childnr = randomvalue(0,20);
 let minimum; 
 let maximum;
+// Adjust house size to the "house"
 switch(houses[housenr]){
   case "in a house":
     minimum = 50;
@@ -145,19 +147,20 @@ switch(houses[housenr]){
     maximum = 1000;
 }
 let areanr = randomvalue(minimum, maximum);
-// let areanr = Math.floor(1000 * Math.random());
 
-// Prompt
+// old prompt -> deprecated
 /*let userJob = prompt("Desired Job?", "Doctor");
 let userLoc = prompt("Where?", "Aerospace");
 let userPart = prompt("Partner?", "anyone");
 let userChild = prompt("Number of Children", 0);
 let userArea = prompt("Size of House", 40);
-// Console log user input
-console.log(fortune(userChild, userPart, userLoc, userJob, userArea));*/
-// alert(
-//   fortune(childnr, partners[partnr], geolocs[geonr], jobs[jobnr], areanr)
-// );
+// Console log user input -> deprecated
+console.log(fortune(userChild, userPart, userLoc, userJob, userArea));
+// Alert output -> deprecated
+ alert(
+   fortune(childnr, partners[partnr], geolocs[geonr], jobs[jobnr], areanr)
+);*/
+//Function call and output to the HTML
 document.getElementById("fortune").innerHTML = fortune(
   childnr,
   partners[partnr],
