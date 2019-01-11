@@ -82,7 +82,8 @@ let geolocs_engl = [
   "China",
   "Saudi-Arabia",
   "France",
-  "Turkey"
+  "Turkey",
+  "Russia"
 ];
 let partners_engl = [
   "a man",
@@ -155,7 +156,8 @@ let geolocs_germ = [
   "China",
   "Saudi-Arabien",
   "Frankreich",
-  "der Türkei"
+  "der Türkei",
+  "Russland"
 ];
 let partners_germ = [
   "einem Mann",
