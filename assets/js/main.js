@@ -24,6 +24,7 @@ let jobs = [
   "a pimp in",
   "a prostitute in",
   "the president of",
+  "the dictator of",
   "the king of",
   "the queen of",
   "the emperor of",
@@ -38,7 +39,7 @@ let jobs = [
 let geolocs = [
   "North Korea",
   "Japan",
-  "the US",
+  "the USA",
   "Germany",
   "Italy",
   "Finland",
@@ -50,7 +51,8 @@ let geolocs = [
   "Thailand",
   "China",
   "Saudi-Arabia",
-  "France"
+  "France",
+  "Turkey"
 ];
 let partners = [
   "a man",
@@ -69,6 +71,9 @@ let partners = [
   "your bear",
   "your turtle",
   "your bunny",
+  "your horse",
+  "your sheep",
+  "your goat",
   "your job"
 ];
 let houses = [
