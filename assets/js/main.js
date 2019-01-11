@@ -10,8 +10,8 @@ const fortune = (
   let child =
     numch === 0 ? "no kids" : numch === 1 ? `${numch} kid` : `${numch} kids`;
   let sqm = 
-    area === 1 ? `${area} square meter` : `${area} square meters`;
-  return `You will be ${job} ${loc}, married to ${partn} with ${child} living in ${house} of ${sqm}.`;
+    area === 1 ? ` of ${area} square meter` : area > 1 ? ` of ${area} square meters` : "";
+  return `You will be ${job} ${loc}, married to ${partn} with ${child} living ${house}${sqm}.`;
 };
 
 const randomize = MyArray => Math.floor(Math.random() * MyArray.length);
@@ -71,17 +71,18 @@ let partners = [
   "your job"
 ];
 let houses = [
-  "a house",
-  "a flat",
-  "a penthouse",
-  "a public restroom",
-  "a palace",
-  "a whorehouse",
-  "a prison cell",
-  "a tent",
-  "a trailer",
-  "a phone box",
-  "a stable"
+  "in a house",
+  "in a flat",
+  "in a penthouse",
+  "in a public restroom",
+  "in a palace",
+  "in a whorehouse",
+  "in a prison cell",
+  "in a tent",
+  "in a trailer",
+  "in a phone box",
+  "in a stable",
+  "on the street"
 ];
 let jobnr = randomize(jobs);
 let geonr = randomize(geolocs);
@@ -91,49 +92,53 @@ let childnr = Math.floor(20 * Math.random());
 let minimum; 
 let maximum;
 switch(houses[housenr]){
-  case "a house":
+  case "in a house":
     minimum = 50;
     maximum = 201;
     break;
-  case "a flat":
+  case "in a flat":
     minimum = 30;
     maximum = 101;
     break;
-  case "a penthouse":
+  case "in a penthouse":
     minimum = 500;
     maximum = 1001;
     break;
-  case "a public restroom":
+  case "in a public restroom":
     minimum = 10;
     maximum = 41;
     break;
-  case "a palace":
+  case "in a palace":
     minimum = 500;
     maximum = 6001;
     break;
-  case "a whorehouse":
+  case "in a whorehouse":
     minimum = 50;
     maximum = 3001;
     break;
-  case "a prison cell":
+  case "in a prison cell":
     minimum = 8;
     maximum = 11;
     break;
-  case "a tent":
+  case "in a tent":
     minimum = 4;
     maximum = 21;
     break;
-  case "a trailer":
+  case "in a trailer":
     minimum = 8;
     maximum = 21;
     break;
-  case "a phone box":
+  case "in a phone box":
     minimum = 1;
     maximum = 5;
     break;
-  case "a stable":
+  case "in a stable":
     minimum = 30;
-    maximum = 5000;
+    maximum = 5001;
+    break;
+  case "on the street":
+    minimum = 0;
+    maximum = 1;
     break;
   default:
     minimum = 1;
