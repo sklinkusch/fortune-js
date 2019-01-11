@@ -78,6 +78,9 @@ const fortune_fr = (
   } else if (/ de$/.test(job) && /^le /.test(loc)) {
     job_ft = job.replace(" de", " du");
     loc_ft = loc.substring(3);
+  } else if (/ de$/.test(job) && /^les /.test(loc)){
+    job_ft = job.replace(" de", " des");
+    loc_ft = loc.substring(4);
   }
   return `Tu seras ${job_ft} ${loc_ft}, tu seras ${marie} avec ${partn}, tu ${child} et tu ${house}${sqm}.`;
 }
