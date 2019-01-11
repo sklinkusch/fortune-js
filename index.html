@@ -11,21 +11,24 @@
 
 <body>
   <header>
-    <h1 id="title"></h1>
+    <h1 id="title">&nbsp;</h1>
   </header>
   <main>
     <form method="POST">
       <select name="language" id="language">
         <option value="from">Take from browser settings</option>
         <option value="en">English</option>
-        <option value="de">German</option>
-        <option value="fr">French</option>
+        <option value="de">German&Deutsch</option>
+        <option value="fr">French/Franc&#807;ais</option>
       </select>
     </form>
-    <blockquote id="fortune"></blockquote>
+    <section>
+      <blockquote id="fortune"></blockquote>
+    </section>
   </main>
   <script src="./assets/js/main.js"></script>
   <script>newFortune();</script>
+  <script>writeTitle();</script>
 </body>
 
 </html>

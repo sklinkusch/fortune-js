@@ -57,29 +57,29 @@ const fortune_fr = (
   let sqm = area === 1 ? ` d'un mètre carré` : area > 1 ? ` de ${area} mètres carré` : "";
   let job_ft;
   let loc_ft;
-  if (/en/.test(job) && /^la /.test(loc)) {
+  if (/ en$/.test(job) && /^la /.test(loc)) {
     job_ft = job;
     loc_ft = loc.substring(3);
-  } else if (/en/.test(job) && /^l'/.test(loc)) {
+  } else if (/ en$/.test(job) && /^l'/.test(loc)) {
     job_ft = job;
     loc_ft = loc.substring(2);
-  } else if (/en/.test(job) && /^les /.test(loc)) {
-    job_ft = job.replace("en", "aux");
+  } else if (/ en$/.test(job) && /^les /.test(loc)) {
+    job_ft = job.replace(" en", " aux");
     loc_ft = loc.substring(4);
-  } else if (/en/.test(job) && /^le /.test(loc)) {
-    job_ft = job.replace("en", "au");
+  } else if (/ en$/.test(job) && /^le /.test(loc)) {
+    job_ft = job.replace(" en", " au");
     loc_ft = loc.substring(3);
-  } else if (/de/.test(job) && /^la /.test(loc)) {
+  } else if (/ de$/.test(job) && /^la /.test(loc)) {
     job_ft = job;
     loc_ft = loc.substring(3);
-  } else if (/de/.test(job) && /l'/.test(loc)) {
-    job_ft = job.replace("de", "d'");
+  } else if (/ de$/.test(job) && /l'/.test(loc)) {
+    job_ft = job.replace(" de", " d'");
     loc_ft = loc.substring(2);
-  } else if (/de/.test(job) && /^le /.test(loc)) {
-    job_ft = job.replace("de", "du");
+  } else if (/ de$/.test(job) && /^le /.test(loc)) {
+    job_ft = job.replace(" de", " du");
     loc_ft = loc.substring(3);
   }
-  return `Tu seras ${job_ft} ${loc_ft}, tu seras ${marie} avec ${partn}, tu ${child} et tu vivras ${house}${sqm}.`;
+  return `Tu seras ${job_ft} ${loc_ft}, tu seras ${marie} avec ${partn}, tu ${child} et tu ${house}${sqm}.`;
 }
 // Functions to create random values
 const randomize = MyArray => Math.floor(Math.random() * MyArray.length);
@@ -294,18 +294,18 @@ let partners_fr = [
   "ta profession"
 ];
 let houses_fr = [
-  "dans une maison",
-  "dans un appartement",
-  "dans un penthouse",
-  "dans des toilettes publiques",
-  "dans un château",
-  "dans une maison close",
-  "dans une cellule de prison",
-  "dans une tente",
-  "dans une caravane",
-  "dans une cabine téléphonique",
-  "dans une étable",
-  "à la rue"
+  "habiteras dans une maison",
+  "habiteras dans un appartement",
+  "habiteras dans un penthouse",
+  "habiteras dans des toilettes publiques",
+  "habiteras dans un château",
+  "habiteras dans une maison close",
+  "habiteras dans une cellule de prison",
+  "habiteras dans une tente",
+  "habiteras dans une caravane",
+  "habiteras dans une cabine téléphonique",
+  "habiteras dans une étable",
+  "seras sans domicile fixe"
 ];
 function newFortune() {
   let LangSel = document.getElementById("language").value;
@@ -361,73 +361,73 @@ function newFortune() {
   switch (house) {
     case "in einem Haus":
     case "in a house":
-    case "dans une maison":
+    case "habiteras dans une maison":
       minimum = 50;
       maximum = 201;
       break;
     case "in einer Wohnung":
     case "in a flat":
-    case "dans un appartement":
+    case "habiteras dans un appartement":
       minimum = 30;
       maximum = 101;
       break;
     case "in einem Penthouse":
     case "in a penthouse":
-    case "dans un penthouse":
+    case "habiteras dans un penthouse":
       minimum = 500;
       maximum = 1001;
       break;
     case "in einer öffentlichen Toilette":
     case "in a public restroom":
-    case "dans des toilettes publiques":
+    case "habiteras dans des toilettes publiques":
       minimum = 10;
       maximum = 41;
       break;
     case "in einem Schloss":
     case "in a palace":
-    case "dans un château":
+    case "habiteras dans un château":
       minimum = 500;
       maximum = 6001;
       break;
     case "in einem Bordell":
     case "in a whorehouse":
-    case "dans une maison close":
+    case "habiteras dans une maison close":
       minimum = 50;
       maximum = 3001;
       break;
     case "in einer Gefängniszelle":
     case "in a prison cell":
-    case "dans une cellule de prison":
+    case "habiteras dans une cellule de prison":
       minimum = 8;
       maximum = 11;
       break;
     case "in einem Zelt":
     case "in a tent":
-    case "dans une tente":
+    case "habiteras dans une tente":
       minimum = 4;
       maximum = 21;
       break;
     case "in einem Wohnwagen":
     case "in a trailer":
-    case "dans une caravane":
+    case "habiteras dans une caravane":
       minimum = 8;
       maximum = 21;
       break;
     case "in einer Telefonzelle":
     case "in a phone box":
-    case "dans une cabine téléphonique":
+    case "habiteras dans une cabine téléphonique":
       minimum = 1;
       maximum = 5;
       break;
     case "in einem Stall":
     case "in a stable":
-    case "dans une étable":
+    case "habiteras dans une étable":
       minimum = 30;
       maximum = 5001;
       break;
     case "auf der Straße":
     case "on the street":
-    case "à la rue":
+    case "seras sans domicile fixe":
       minimum = 0;
       maximum = 1;
       break;
@@ -473,15 +473,32 @@ function newFortune() {
       );
   }
 }
-// old prompt -> deprecated
-/*let userJob = prompt("Desired Job?", "Doctor");
-let userLoc = prompt("Where?", "Aerospace");
-let userPart = prompt("Partner?", "anyone");
-let userChild = prompt("Number of Children", 0);
-let userArea = prompt("Size of House", 40);
-// Console log user input -> deprecated
-console.log(fortune(userChild, userPart, userLoc, userJob, userArea));
-// Alert output -> deprecated
- alert(
-   fortune(childnr, partners[partnr], geolocs[geonr], jobs[jobnr], areanr)
-);*/
+function writeTitle() {
+  let LangSel = document.getElementById("language").value;
+  let lang;
+  switch (LangSel) {
+    case "from":
+      lang = navigator.language;
+      break;
+    case "de":
+      lang = "de";
+      break;
+    case "en":
+      lang = "en";
+      break;
+    case "fr":
+      lang = "fr";
+      break;
+  }
+  let title;
+  switch (lang) {
+    case "de":
+      document.getElementById("title").innerHTML = "Erfahre deine Zukunft";
+      break;
+    case "fr":
+      document.getElementById("title").innerHTML = "Apprends ton avenir";
+      break;
+    default:
+      document.getElementById("title").innerHTML = "Know your future";
+  }
+}
