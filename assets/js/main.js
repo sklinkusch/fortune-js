@@ -43,6 +43,44 @@ const fortune_germ = (
   }
   return `Du wirst ${job_ft} ${loc_ft} sein, mit ${partn} verheiratet sein, ${child} haben und ${house}${sqm} leben.`;
 };
+// Function to create the French fortune sentence
+const fortune_fr = (
+  numch = 0,
+  partn = "Mme Toulemonde",
+  loc = "en Aérospace",
+  house = "une maison",
+  job = "un ouvrier",
+  area = 1
+) => {
+  let marie = (/reine/.test(job) || /impératrice/.test(job) || /prostituée/.test(job)) ? "mariée" : "marié"
+  let child = numch === 0 ? `n'auras pas d'enfants` : numch === 1 ? `auras un enfant` : `auras ${numch} enfants`;
+  let sqm = area === 1 ? ` d'un mètre carré` : area > 1 ? ` de ${area} mètres carré` : "";
+  let job_ft;
+  let loc_ft;
+  if (/en/.test(job) && /^la /.test(loc)) {
+    job_ft = job;
+    loc_ft = loc.substring(3);
+  } else if (/en/.test(job) && /^l'/.test(loc)) {
+    job_ft = job;
+    loc_ft = loc.substring(2);
+  } else if (/en/.test(job) && /^les /.test(loc)) {
+    job_ft = job.replace("en", "aux");
+    loc_ft = loc.substring(4);
+  } else if (/en/.test(job) && /^le /.test(loc)) {
+    job_ft = job.replace("en", "au");
+    loc_ft = loc.substring(3);
+  } else if (/de/.test(job) && /^la /.test(loc)) {
+    job_ft = job;
+    loc_ft = loc.substring(3);
+  } else if (/de/.test(job) && /l'/.test(loc)) {
+    job_ft = job.replace("de", "d'");
+    loc_ft = loc.substring(2);
+  } else if (/de/.test(job) && /^le /.test(loc)) {
+    job_ft = job.replace("de", "du");
+    loc_ft = loc.substring(3);
+  }
+  return `Tu seras ${job_ft} ${loc_ft}, tu seras ${marie} avec ${partn}, tu ${child} et tu vivras ${house}${sqm}.`;
+}
 // Functions to create random values
 const randomize = MyArray => Math.floor(Math.random() * MyArray.length);
 const randomvalue = (min, max) => Math.floor(Math.random() * (max - min) + min);
@@ -195,6 +233,80 @@ let houses_germ = [
   "in einem Stall",
   "auf der Straße"
 ];
+let jobs_fr = [
+  "un médecin en",
+  "un narcotrafiquant en",
+  "un assassin en",
+  "un souteneur en",
+  "une prostituée en",
+  "le président de",
+  "le dictateur de",
+  "le roi de",
+  "la reine de",
+  "l'empereur de",
+  "l'impératrice de",
+  "le Dalaï-lama en",
+  "un paysan en",
+  "le pape en",
+  "un président du directoire en",
+  "un clown en",
+  "un voleur de banque en"
+];
+let geolocs_fr = [
+  "la Corée du Nord",
+  "le Japon",
+  "les États-Unis",
+  "l'Allemagne",
+  "l'Italie",
+  "la Finlande",
+  "l'Afrique du Sud",
+  "l'Argentine",
+  "le Mexique",
+  "le Vatican",
+  "l'Australie",
+  "la Thaïlande",
+  "la Chine",
+  "l'Arabie saoudite",
+  "la France",
+  "la Turquie",
+  "la Russie"
+];
+let partners_fr = [
+  "un homme",
+  "une femme",
+  "plusieurs hommes en même temps",
+  "plusieurs femmes en même temps",
+  "plusieurs femmes et plusieurs hommes en même temps",
+  "personne",
+  "ton chien",
+  "ton chat",
+  "ton hamster",
+  "ton cochon d'Inde",
+  "ton cochon",
+  "ta vache",
+  "ton taureau",
+  "ton ours",
+  "ta tortue",
+  "ton lièvre",
+  "ton cheval",
+  "ton mouton",
+  "ta chèvre",
+  "ta profession"
+];
+let houses_fr = [
+  "dans une maison",
+  "dans un appartement",
+  "dans un penthouse",
+  "dans des toilettes publiques",
+  "dans un château",
+  "dans une maison close",
+  "dans une cellule de prison",
+  "dans une tente",
+  "dans une caravane",
+  "dans une cabine téléphonique",
+  "dans une étable",
+  "à la rue"
+];
 function newFortune() {
   let LangSel = document.getElementById("language").value;
   let lang;
@@ -207,6 +319,9 @@ function newFortune() {
       break;
     case "en":
       lang = "en";
+      break;
+    case "fr":
+      lang = "fr";
       break;
   }
   let jobnr;
@@ -224,6 +339,14 @@ function newFortune() {
       housenr = randomize(houses_germ);
       house = houses_germ[housenr];
       break;
+    case "fr":
+    case "fr-FR":
+      jobnr = randomize(jobs_fr);
+      geonr = randomize(geolocs_fr);
+      partnr = randomize(partners_fr);
+      housenr = randomize(houses_fr);
+      house = houses_fr[housenr];
+      break;
     default:
       jobnr = randomize(jobs_engl);
       geonr = randomize(geolocs_engl);
@@ -238,67 +361,80 @@ function newFortune() {
   switch (house) {
     case "in einem Haus":
     case "in a house":
+    case "dans une maison":
       minimum = 50;
       maximum = 201;
       break;
     case "in einer Wohnung":
     case "in a flat":
+    case "dans un appartement":
       minimum = 30;
       maximum = 101;
       break;
     case "in einem Penthouse":
     case "in a penthouse":
+    case "dans un penthouse":
       minimum = 500;
       maximum = 1001;
       break;
     case "in einer öffentlichen Toilette":
     case "in a public restroom":
+    case "dans des toilettes publiques":
       minimum = 10;
       maximum = 41;
       break;
     case "in einem Schloss":
     case "in a palace":
+    case "dans un château":
       minimum = 500;
       maximum = 6001;
       break;
     case "in einem Bordell":
     case "in a whorehouse":
+    case "dans une maison close":
       minimum = 50;
       maximum = 3001;
       break;
     case "in einer Gefängniszelle":
     case "in a prison cell":
+    case "dans une cellule de prison":
       minimum = 8;
       maximum = 11;
       break;
     case "in einem Zelt":
     case "in a tent":
+    case "dans une tente":
       minimum = 4;
       maximum = 21;
       break;
     case "in einem Wohnwagen":
     case "in a trailer":
+    case "dans une caravane":
       minimum = 8;
       maximum = 21;
       break;
     case "in einer Telefonzelle":
     case "in a phone box":
+    case "dans une cabine téléphonique":
       minimum = 1;
       maximum = 5;
       break;
     case "in einem Stall":
     case "in a stable":
+    case "dans une étable":
       minimum = 30;
       maximum = 5001;
       break;
     case "auf der Straße":
     case "on the street":
+    case "à la rue":
       minimum = 0;
       maximum = 1;
       break;
     default:
       minimum = 1;
       maximum = 1000;
+      qö
   }
   let areanr = randomvalue(minimum, maximum);
   //Function call and output to the HTML
@@ -312,6 +448,17 @@ function newFortune() {
         geolocs_germ[geonr],
         houses_germ[housenr],
         jobs_germ[jobnr],
+        areanr
+      );
+      break;
+    case "fr":
+    case "fr-FR":
+      document.getElementById("fortune").innerHTML = fortune_fr(
+        childnr,
+        partners_fr[partnr],
+        geolocs_fr[geonr],
+        houses_fr[housenr],
+        jobs_fr[jobnr],
         areanr
       );
       break;
