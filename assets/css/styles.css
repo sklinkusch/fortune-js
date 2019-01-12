@@ -21,6 +21,12 @@ select {
   background-color: white;
   color: blue;
 }
+#reload {
+  border: 2px solid blue;
+  background-color: yellow;
+  color: black;
+  font-weight: bold;
+}
 section {
   width: 75%;
   margin: 20px auto;

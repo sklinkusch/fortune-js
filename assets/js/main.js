@@ -78,7 +78,7 @@ const fortune_fr = (
   } else if (/ de$/.test(job) && /^le /.test(loc)) {
     job_ft = job.replace(" de", " du");
     loc_ft = loc.substring(3);
-  } else if (/ de$/.test(job) && /^les /.test(loc)){
+  } else if (/ de$/.test(job) && /^les /.test(loc)) {
     job_ft = job.replace(" de", " des");
     loc_ft = loc.substring(4);
   }
@@ -476,7 +476,7 @@ function newFortune() {
       );
   }
 }
-function writeTitle() {
+function writeText() {
   let LangSel = document.getElementById("language").value;
   let lang;
   switch (LangSel) {
@@ -493,15 +493,17 @@ function writeTitle() {
       lang = "fr";
       break;
   }
-  let title;
   switch (lang) {
     case "de":
       document.getElementById("title").innerHTML = "Erfahre deine Zukunft";
+      document.getElementById("reload").value = "Neue Weissagung";
       break;
     case "fr":
       document.getElementById("title").innerHTML = "Apprends ton avenir";
+      document.getElementById("reload").value = "Nouvelle prophétie";
       break;
     default:
       document.getElementById("title").innerHTML = "Know your future";
+      document.getElementById("reload").value = "New prophecy";
   }
 }
