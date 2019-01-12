@@ -84,6 +84,24 @@ const fortune_fr = (
   }
   return `Tu seras ${job_ft} ${loc_ft}, tu seras ${marie} avec ${partn}, tu ${child} et tu ${house}${sqm}.`;
 }
+const fortune_la = (
+  numch = 0,
+  partn = "Caio Iulio Caesare",
+  loc = "in terra",
+  house = "mansione",
+  job = "faber",
+  area = 1
+) => {
+  let marie;
+  if (/regina/.test(job) || /imperatoria/.test(job) || /prostituta/.test(job)) {
+    marie = "nupta";
+  } else {
+    marie = "nuptus";
+  }
+  let child = (numch === 0) ? "non erunt filii" : (numch === 1) ? "erit filius" : `erunt ${numch} filii`;
+  let sqm = (area == 1) ? "unius metri quadrati" : (area > 1) ? `$(area) metrorum quadratorum` : "";
+  return `Eris ${job} ${loc}, ${marie} cum ${partn}, tibi ${child} habitabisque in ${house} ${sqm}.`;
+}
 // Functions to create random values
 const randomize = MyArray => Math.floor(Math.random() * MyArray.length);
 const randomvalue = (min, max) => Math.floor(Math.random() * (max - min) + min);
@@ -492,6 +510,9 @@ function writeText() {
     case "fr":
       lang = "fr";
       break;
+    case "la":
+      lang = "la";
+      break;
   }
   switch (lang) {
     case "de":
@@ -501,6 +522,10 @@ function writeText() {
     case "fr":
       document.getElementById("title").innerHTML = "Apprends ton avenir";
       document.getElementById("reload").value = "Nouvelle prophétie";
+      break;
+    case "la":
+      document.getElementById("title").innerHTML = "Res futurae tuae";
+      document.getElementById("reload").value = "Oraculum novum";
       break;
     default:
       document.getElementById("title").innerHTML = "Know your future";
