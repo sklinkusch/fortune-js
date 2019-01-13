@@ -618,19 +618,23 @@ function writeText() {
   }
   switch (lang) {
     case "de":
-      document.getElementById("title").innerHTML = "Erfahre deine Zukunft";
+      document.getElementById("title").innerHTML = "🔮Erfahre deine Zukunft🔮";
+      document.getElementById("subtitle").innerHTML = "Ein lustiges Wahrsagespiel";
       document.getElementById("reload").value = "Neue Weissagung";
       break;
     case "fr":
-      document.getElementById("title").innerHTML = "Apprends ton avenir";
+      document.getElementById("title").innerHTML = "🔮Apprends ton avenir🔮";
+      document.getElementById("subtitle").innerHTML = "Un jeu prophétique drôle";
       document.getElementById("reload").value = "Nouvelle prophétie";
       break;
     case "la":
-      document.getElementById("title").innerHTML = "Res futurae tuae";
+      document.getElementById("title").innerHTML = "🔮Res futurae tuae🔮";
+      document.getElementById("subtitle").innerHTML = "Ludus divinans hilarus";
       document.getElementById("reload").value = "Oraculum novum";
       break;
     default:
-      document.getElementById("title").innerHTML = "Know your future";
+      document.getElementById("title").innerHTML = "🔮Know your future🔮";
+      document.getElementById("subtitle").innerHTML = "A funny fortune teller game";
       document.getElementById("reload").value = "New prophecy";
   }
 }
