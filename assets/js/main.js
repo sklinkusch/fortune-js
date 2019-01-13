@@ -354,7 +354,7 @@ let geolocs_la = [
   "in Germania",
   "in Italia",
   "in Finnia",
-  "in Africa Australie",
+  "in Africa Australe",
   "in Argentina",
   "in Mexico",
   "in Civitate Vaticana",
