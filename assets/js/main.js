@@ -445,6 +445,80 @@ let houses_la = [
   "habitabisque in stabulo",
   "erisque domo carens"
 ];
+let jobs_it = [
+  "un dottore in",
+  "un narcotrafficante in",
+  "un assassino in",
+  "un ruffiano en",
+  "una prostituta en",
+  "il presidente di",
+  "il dittatore di",
+  "il re di",
+  "la regina di"
+  "l'imperatore di",
+  "l'imperatrice di",
+  "il Dalai Lama in",
+  "un contadino in",
+  "il papa in",
+  "un amministratore delegato in",
+  "un buffone in",
+  "un rapinatore in banca in"
+];
+let geolocs_it = [
+  "la Corea del Nord",
+  "il Giappone",
+  "gli Stati Uniti",
+  "la Germania",
+  "l'Italia",
+  "la Finlandia",
+  "il Sudafrica",
+  "l'Argentina",
+  "il Messico",
+  "il Vaticano",
+  "l'Australia",
+  "la Thaïlandia",
+  "la Cina",
+  "l'Arabia Saudita",
+  "la Francia",
+  "la Turchia",
+  "la Russia"
+];
+let partners_it = [
+  "un uomo",
+  "una donna",
+  "più uomi simultaneamente",
+  "più donne simultaneamente",
+  "più uomi e donne simultaneamente",
+  "nessuno",
+  "cane",
+  "gatto",
+  "criceto",
+  "pocellino d'India",
+  "maiale",
+  "vacca",
+  "toro",
+  "orso",
+  "tartaruga",
+  "lepre",
+  "cavallo",
+  "pecora",
+  "capra",
+  "professione"
+];
+let houses_fr = [
+  "in casa",
+  "in appartamento",
+  "in attico",
+  "in i gabinetti pubblici",
+  "in castello",
+  "in bordello",
+  "in cella",
+  "in tenda",
+  "in roulotte",
+  "in cabina del telefono",
+  "in stalla",
+  "senza tetto"
+];
 function newFortune() {
   let LangSel = document.getElementById("language").value;
   let lang;
