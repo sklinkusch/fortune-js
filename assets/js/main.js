@@ -38,7 +38,10 @@ const fortune_germ = (
   let loc_ft;
   if (
     /von/.test(job) &&
-    (loc === "den Vereinigten Staaten von Amerika" || loc === "der Türkei")
+    (loc === "den Vereinigten Staaten von Amerika" ||
+      loc === "der Türkei" ||
+      loc === "den Malediven" ||
+      loc === "der Schweiz")
   ) {
     job_ft = job.substr(0, job.length - 4);
     loc_ft = loc.replace("den", "der");
@@ -239,8 +242,8 @@ let jobs_germ = [
   "ein Vorstandsvorsitzender in",
   "ein Clown in",
   "ein Bankräuber in",
-  "ein Tauchlehrer",
-  "ein Skilehrer"
+  "ein Tauchlehrer in",
+  "ein Skilehrer in"
 ];
 let geolocs_germ = [
   "Nordkorea",
@@ -320,8 +323,8 @@ let jobs_fr = [
   "un président du directoire en",
   "un clown en",
   "un voleur de banque en",
-  "un instructeur de plongée",
-  "un moniteur de ski"
+  "un instructeur de plongée en",
+  "un moniteur de ski en"
 ];
 let geolocs_fr = [
   "la Corée du Nord",
