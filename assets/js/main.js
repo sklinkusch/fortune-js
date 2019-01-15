@@ -166,10 +166,13 @@ const fortune_it = (
         : "";
   let job_ft;
   let loc_ft;
-  if (job.endsWith('in') && /^nel/.test(loc)) {
+  if (job.endsWith('in') && /^nelle/.test(loc)) {
     job_ft = job.slice(0, -3);
     loc_ft = loc;
   } else if (job.endsWith('in') && /^nello/.test(loc)) {
+    job_ft = job.slice(0, -3);
+    loc_ft = loc;
+  } else if (job.endsWith('in') && /^nel/.test(loc)) {
     job_ft = job.slice(0, -3);
     loc_ft = loc;
   } else if (job.endsWith('in') && /^nei/.test(loc)) {
@@ -178,9 +181,12 @@ const fortune_it = (
   } else if (job.endsWith('in') && /^negli/.test(loc)) {
     job_ft = job.slice(0, -3);
     loc_ft = loc;
-  } else if (job.endsWith('di') && /^nei/.test(loc)) {
+  } else if (job.endsWith('di') && /^nelle/.test(loc)) {
     job_ft = job.slice(0, -3);
-    loc_ft = loc.replace("nei ", "dei ");
+    loc_ft = loc.replace("nelle ", "delle ");
+  } else if (job.endsWith('di') && /^nello/.test(loc)) {
+    job_ft = job.slice(0, -3);
+    loc_ft = loc.replace("nello ", "dello ");
   } else if (job.endsWith('di') && /^nel/.test(loc)) {
     job_ft = job.slice(0, -3);
     loc_ft = loc.replace("nel ", "del ");
@@ -542,7 +548,9 @@ let jobs_it = [
   "il papa in",
   "un amministratore delegato in",
   "un buffone in",
-  "un rapinatore in banca in"
+  "un rapinatore in banca in",
+  "un istruttore di immersioni",
+  "un maestro di sci"
 ];
 let geolocs_it = [
   "Corea del Nord",
@@ -561,7 +569,10 @@ let geolocs_it = [
   "Arabia Saudita",
   "Francia",
   "Turchia",
-  "Russia"
+  "Russia",
+  "Svizzera",
+  "nel Nepal",
+  "nelle Maldive"
 ];
 let partners_it = [
   "un uomo",
@@ -597,6 +608,8 @@ let houses_it = [
   "abiterai in un roulotte",
   "abiterai in una cabina del telefono",
   "abiterai in una stalla",
+  "abiterai in una piscina",
+  "abiterai in una grotta",
   "serai senza tetto"
 ];
 function newFortune() {
