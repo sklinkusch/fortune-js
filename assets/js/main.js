@@ -178,6 +178,15 @@ const fortune_it = (
   } else if (/in$/.test(job) && /^negli/.test(loc)) {
     job_ft = job.replace(" in", "");
     loc_ft = loc;
+  } else if (/di$/.test(job) && /^nei/.test(loc)) {
+    job_ft = job.replace(" di", "");
+    loc_ft = loc.replace("nei ", "dei ");
+  } else if (/di$/.test(job) && /^nel/.test(loc)) {
+    job_ft = job.replace(" di", "");
+    loc_ft = loc.replace("nel ", "del ");
+  } else if (/di$/.test(job) && /^negli/.test(loc)) {
+    job_ft = job.replace(" di", "");
+    loc_ft = loc.replace("negli ", "degli ");
   } else {
     job_ft = job;
     loc_ft = loc;
@@ -541,7 +550,7 @@ let geolocs_it = [
   "nel Messico",
   "nel Vaticano",
   "Australia",
-  "Thaïlandia",
+  "Thailandia",
   "Cina",
   "Arabia Saudita",
   "Francia",
