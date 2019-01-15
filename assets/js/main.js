@@ -164,7 +164,25 @@ const fortune_it = (
       : area > 1
       ? `di ${area} metri quadrati`
       : "";
-  return `Tu sarai ${job} ${loc}, ${marie} con ${partn}, tu avrai ${child} e abiterai ${house} ${sqm}.`;
+  let job_ft;
+  let loc_ft;
+  if (/in$/.test(job) && /^nel/.test(loc)) {
+    job_ft = job.replace(" in", "");
+    loc_ft = loc;
+  } else if (/in$/.test(job) && /^nello/.test(loc)) {
+    job_ft = job.replace(" in", "");
+    loc_ft = loc;
+  } else if (/in$/.test(job) && /^nei/.test(loc)) {
+    job_ft = job.replace(" in", "");
+    loc_ft = loc;
+  } else if (/in$/.test(job) && /^negli/.test(loc)) {
+    job_ft = job.replace(" in", "");
+    loc_ft = loc;
+  } else {
+    job_ft = job;
+    loc_ft = loc;
+  }
+  return `Tu sarai ${job_ft} ${loc_ft}, ${marie} con ${partn}, tu avrai ${child} e abiterai ${house} ${sqm}.`;
 };
 // Functions to create random values
 const randomize = MyArray => Math.floor(Math.random() * MyArray.length);
@@ -496,8 +514,8 @@ let jobs_it = [
   "un dottore in",
   "un narcotrafficante in",
   "un assassino in",
-  "un ruffiano en",
-  "una prostituta en",
+  "un ruffiano in",
+  "una prostituta in",
   "il presidente di",
   "il dittatore di",
   "il re di",
@@ -512,23 +530,23 @@ let jobs_it = [
   "un rapinatore in banca in"
 ];
 let geolocs_it = [
-  "la Corea del Nord",
-  "il Giappone",
-  "gli Stati Uniti",
-  "la Germania",
-  "l'Italia",
-  "la Finlandia",
-  "il Sudafrica",
-  "l'Argentina",
-  "il Messico",
-  "il Vaticano",
-  "l'Australia",
-  "la Thaïlandia",
-  "la Cina",
-  "l'Arabia Saudita",
-  "la Francia",
-  "la Turchia",
-  "la Russia"
+  "Corea del Nord",
+  "nel Giappone",
+  "negli Stati Uniti",
+  "Germania",
+  "Italia",
+  "Finlandia",
+  "nel Sudafrica",
+  "Argentina",
+  "nel Messico",
+  "nel Vaticano",
+  "Australia",
+  "Thaïlandia",
+  "Cina",
+  "Arabia Saudita",
+  "Francia",
+  "Turchia",
+  "Russia"
 ];
 let partners_it = [
   "un uomo",
