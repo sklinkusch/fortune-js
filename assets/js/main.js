@@ -10,7 +10,11 @@ const fortune_engl = (
   let child =
     numch === 0 ? "no kids" : numch === 1 ? `${numch} kid` : `${numch} kids`;
   let sqm =
-    area === 1 ? ` of ${area} square meter` : area > 1 ? ` of ${area} square meters` : "";
+    area === 1
+      ? ` of ${area} square meter`
+      : area > 1
+      ? ` of ${area} square meters`
+      : "";
   return `You will be ${job} ${loc}, married to ${partn} with ${child} living ${house}${sqm}.`;
 };
 // Function to create the German fortune sentence
@@ -25,11 +29,18 @@ const fortune_germ = (
   let child =
     numch === 0 ? "keine Kinder" : numch === 1 ? "ein Kind" : `${numch} Kinder`;
   let sqm =
-    area === 1 ? " mit einem Quadratmeter Wohnfläche" : area > 1 ? ` mit ${area} Quadratmetern Wohnfläche` : "";
+    area === 1
+      ? " mit einem Quadratmeter Wohnfläche"
+      : area > 1
+      ? ` mit ${area} Quadratmetern Wohnfläche`
+      : "";
   let job_ft;
   let loc_ft;
-  if (/von/.test(job) && (loc === "den Vereinigten Staaten von Amerika" || loc === "der Türkei")) {
-    job_ft = job.substr(0, (job.length - 4));
+  if (
+    /von/.test(job) &&
+    (loc === "den Vereinigten Staaten von Amerika" || loc === "der Türkei")
+  ) {
+    job_ft = job.substr(0, job.length - 4);
     loc_ft = loc.replace("den", "der");
   } else if (/von/.test(job) && loc === "Vatikan") {
     job_ft = job.replace("von", "des");
@@ -52,9 +63,22 @@ const fortune_fr = (
   job = "un ouvrier",
   area = 1
 ) => {
-  let marie = (/reine/.test(job) || /impératrice/.test(job) || /prostituée/.test(job)) ? "mariée" : "marié"
-  let child = numch === 0 ? `n'auras pas d'enfants` : numch === 1 ? `auras un enfant` : `auras ${numch} enfants`;
-  let sqm = area === 1 ? ` d'un mètre carré` : area > 1 ? ` de ${area} mètres carré` : "";
+  let marie =
+    /reine/.test(job) || /impératrice/.test(job) || /prostituée/.test(job)
+      ? "mariée"
+      : "marié";
+  let child =
+    numch === 0
+      ? `n'auras pas d'enfants`
+      : numch === 1
+      ? `auras un enfant`
+      : `auras ${numch} enfants`;
+  let sqm =
+    area === 1
+      ? ` d'un mètre carré`
+      : area > 1
+      ? ` de ${area} mètres carré`
+      : "";
   let job_ft;
   let loc_ft;
   if (/ en$/.test(job) && /^la /.test(loc)) {
@@ -83,7 +107,7 @@ const fortune_fr = (
     loc_ft = loc.substring(4);
   }
   return `Tu seras ${job_ft} ${loc_ft}, tu seras ${marie} avec ${partn}, tu ${child} et tu ${house}${sqm}.`;
-}
+};
 const fortune_la = (
   numch = 0,
   partn = "Caio Iulio Caesare",
@@ -98,10 +122,31 @@ const fortune_la = (
   } else {
     marie = "nuptus";
   }
-  let child = (numch === 0) ? "non erunt filii" : (numch === 1) ? "erit filius" : `erunt ${numch} filii`;
-  let sqm = (area == 1) ? "unius metri quadrati" : (area > 1) ? `${area} metrorum quadratorum` : "";
+  let child =
+    numch === 0
+      ? "non erunt filii"
+      : numch === 1
+      ? "erit filius"
+      : `erunt ${numch} filii`;
+  let sqm =
+    area == 1
+      ? "unius metri quadrati"
+      : area > 1
+      ? `${area} metrorum quadratorum`
+      : "";
   return `Eris ${job} ${loc}, ${marie} cum ${partn}, tibi ${child} ${house} ${sqm}.`;
-}
+};
+// Italian function
+const fortune_it = (
+  numch = 0,
+  partn = "Dante Alighieri",
+  loc = "in Italia",
+  house = "casa",
+  job = "dottore",
+  area = 1
+) => {
+  return `Tu sarai ${job} ${loc}, ${marie} con ${partn}, tu avrai ${child} e abiterai ${house} ${sqm}.`;
+};
 // Functions to create random values
 const randomize = MyArray => Math.floor(Math.random() * MyArray.length);
 const randomvalue = (min, max) => Math.floor(Math.random() * (max - min) + min);
@@ -619,12 +664,14 @@ function writeText() {
   switch (lang) {
     case "de":
       document.getElementById("title").innerHTML = "🔮Erfahre deine Zukunft🔮";
-      document.getElementById("subtitle").innerHTML = "Ein lustiges Wahrsagespiel";
+      document.getElementById("subtitle").innerHTML =
+        "Ein lustiges Wahrsagespiel";
       document.getElementById("reload").value = "Neue Weissagung";
       break;
     case "fr":
       document.getElementById("title").innerHTML = "🔮Apprends ton avenir🔮";
-      document.getElementById("subtitle").innerHTML = "Un jeu prophétique drôle";
+      document.getElementById("subtitle").innerHTML =
+        "Un jeu prophétique drôle";
       document.getElementById("reload").value = "Nouvelle prophétie";
       break;
     case "la":
@@ -634,7 +681,8 @@ function writeText() {
       break;
     default:
       document.getElementById("title").innerHTML = "🔮Know your future🔮";
-      document.getElementById("subtitle").innerHTML = "A funny fortune teller game";
+      document.getElementById("subtitle").innerHTML =
+        "A funny fortune teller game";
       document.getElementById("reload").value = "New prophecy";
   }
 }
