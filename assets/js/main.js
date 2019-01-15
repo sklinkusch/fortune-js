@@ -10,7 +10,11 @@ const fortune_engl = (
   let child =
     numch === 0 ? "no kids" : numch === 1 ? `${numch} kid` : `${numch} kids`;
   let sqm =
-    area === 1 ? ` of ${area} square meter` : area > 1 ? ` of ${area} square meters` : "";
+    area === 1
+      ? ` of ${area} square meter`
+      : area > 1
+      ? ` of ${area} square meters`
+      : "";
   return `You will be ${job} ${loc}, married to ${partn} with ${child} living ${house}${sqm}.`;
 };
 // Function to create the German fortune sentence
@@ -25,11 +29,18 @@ const fortune_germ = (
   let child =
     numch === 0 ? "keine Kinder" : numch === 1 ? "ein Kind" : `${numch} Kinder`;
   let sqm =
-    area === 1 ? " mit einem Quadratmeter Wohnfläche" : area > 1 ? ` mit ${area} Quadratmetern Wohnfläche` : "";
+    area === 1
+      ? " mit einem Quadratmeter Wohnfläche"
+      : area > 1
+      ? ` mit ${area} Quadratmetern Wohnfläche`
+      : "";
   let job_ft;
   let loc_ft;
-  if (/von/.test(job) && (loc === "den Vereinigten Staaten von Amerika" || loc === "der Türkei")) {
-    job_ft = job.substr(0, (job.length - 4));
+  if (
+    /von/.test(job) &&
+    (loc === "den Vereinigten Staaten von Amerika" || loc === "der Türkei")
+  ) {
+    job_ft = job.substr(0, job.length - 4);
     loc_ft = loc.replace("den", "der");
   } else if (/von/.test(job) && loc === "Vatikan") {
     job_ft = job.replace("von", "des");
@@ -52,9 +63,22 @@ const fortune_fr = (
   job = "un ouvrier",
   area = 1
 ) => {
-  let marie = (/reine/.test(job) || /impératrice/.test(job) || /prostituée/.test(job)) ? "mariée" : "marié"
-  let child = numch === 0 ? `n'auras pas d'enfants` : numch === 1 ? `auras un enfant` : `auras ${numch} enfants`;
-  let sqm = area === 1 ? ` d'un mètre carré` : area > 1 ? ` de ${area} mètres carré` : "";
+  let marie =
+    /reine/.test(job) || /impératrice/.test(job) || /prostituée/.test(job)
+      ? "mariée"
+      : "marié";
+  let child =
+    numch === 0
+      ? `n'auras pas d'enfants`
+      : numch === 1
+      ? `auras un enfant`
+      : `auras ${numch} enfants`;
+  let sqm =
+    area === 1
+      ? ` d'un mètre carré`
+      : area > 1
+      ? ` de ${area} mètres carré`
+      : "";
   let job_ft;
   let loc_ft;
   if (/ en$/.test(job) && /^la /.test(loc)) {
@@ -83,7 +107,7 @@ const fortune_fr = (
     loc_ft = loc.substring(4);
   }
   return `Tu seras ${job_ft} ${loc_ft}, tu seras ${marie} avec ${partn}, tu ${child} et tu ${house}${sqm}.`;
-}
+};
 const fortune_la = (
   numch = 0,
   partn = "Caio Iulio Caesare",
@@ -98,10 +122,20 @@ const fortune_la = (
   } else {
     marie = "nuptus";
   }
-  let child = (numch === 0) ? "non erunt filii" : (numch === 1) ? "erit filius" : `erunt ${numch} filii`;
-  let sqm = (area == 1) ? "unius metri quadrati" : (area > 1) ? `${area} metrorum quadratorum` : "";
+  let child =
+    numch === 0
+      ? "non erunt filii"
+      : numch === 1
+      ? "erit filius"
+      : `erunt ${numch} filii`;
+  let sqm =
+    area == 1
+      ? "unius metri quadrati"
+      : area > 1
+      ? `${area} metrorum quadratorum`
+      : "";
   return `Eris ${job} ${loc}, ${marie} cum ${partn}, tibi ${child} ${house} ${sqm}.`;
-}
+};
 // Functions to create random values
 const randomize = MyArray => Math.floor(Math.random() * MyArray.length);
 const randomvalue = (min, max) => Math.floor(Math.random() * (max - min) + min);
@@ -123,7 +157,9 @@ let jobs_engl = [
   "the pope in",
   "a CEO in",
   "a clown in",
-  "a bank robber in"
+  "a bank robber in",
+  "a diving instructor in",
+  "a skiing instructor in"
 ];
 let geolocs_engl = [
   "North Korea",
@@ -142,7 +178,10 @@ let geolocs_engl = [
   "Saudi-Arabia",
   "France",
   "Turkey",
-  "Russia"
+  "Russia",
+  "Switzerland",
+  "Nepal",
+  "Maldives"
 ];
 let partners_engl = [
   "a man",
@@ -178,6 +217,8 @@ let houses_engl = [
   "in a trailer",
   "in a phone box",
   "in a stable",
+  "in a swimming pool",
+  "in a cave",
   "on the street"
 ];
 let jobs_germ = [
@@ -197,7 +238,9 @@ let jobs_germ = [
   "der Papst in",
   "ein Vorstandsvorsitzender in",
   "ein Clown in",
-  "ein Bankräuber in"
+  "ein Bankräuber in",
+  "ein Tauchlehrer",
+  "ein Skilehrer"
 ];
 let geolocs_germ = [
   "Nordkorea",
@@ -216,7 +259,10 @@ let geolocs_germ = [
   "Saudi-Arabien",
   "Frankreich",
   "der Türkei",
-  "Russland"
+  "Russland",
+  "der Schweiz",
+  "Nepal",
+  "den Malediven"
 ];
 let partners_germ = [
   "einem Mann",
@@ -252,6 +298,8 @@ let houses_germ = [
   "in einem Wohnwagen",
   "in einer Telefonzelle",
   "in einem Stall",
+  "in einem Schwimmbecken",
+  "in einer Höhle",
   "auf der Straße"
 ];
 let jobs_fr = [
@@ -271,7 +319,9 @@ let jobs_fr = [
   "le pape en",
   "un président du directoire en",
   "un clown en",
-  "un voleur de banque en"
+  "un voleur de banque en",
+  "un instructeur de plongée",
+  "un moniteur de ski"
 ];
 let geolocs_fr = [
   "la Corée du Nord",
@@ -290,7 +340,10 @@ let geolocs_fr = [
   "l'Arabie saoudite",
   "la France",
   "la Turquie",
-  "la Russie"
+  "la Russie",
+  "la Suisse",
+  "le Népal",
+  "les Maldives"
 ];
 let partners_fr = [
   "un homme",
@@ -326,6 +379,8 @@ let houses_fr = [
   "habiteras dans une caravane",
   "habiteras dans une cabine téléphonique",
   "habiteras dans une étable",
+  "habiteras dans une piscine",
+  "habiteras dans une grotte",
   "seras sans domicile fixe"
 ];
 let jobs_la = [
@@ -345,7 +400,9 @@ let jobs_la = [
   "pontifex maximus",
   "praeses directorati",
   "morus",
-  "raptor argentariae"
+  "raptor argentariae",
+  "instructor demergendus",
+  "instructor nartis currendus"
 ];
 let geolocs_la = [
   "in Corea Septentrionale",
@@ -364,7 +421,10 @@ let geolocs_la = [
   "in Arabia Saudita",
   "in Gallia",
   "in Turcia",
-  "in Russia"
+  "in Russia",
+  "in Helvetica",
+  "in Nepalia",
+  "in Insulae Maldivae"
 ];
 let partners_la = [
   "viro",
@@ -398,6 +458,8 @@ let houses_la = [
   "habitabisque in tracto periegetico",
   "habitabisque in cabina telephoni",
   "habitabisque in stabulo",
+  "habitabisque in thermae",
+  "habitabisque in caverna",
   "erisque domo carens"
 ];
 function newFortune() {
@@ -619,12 +681,14 @@ function writeText() {
   switch (lang) {
     case "de":
       document.getElementById("title").innerHTML = "🔮Erfahre deine Zukunft🔮";
-      document.getElementById("subtitle").innerHTML = "Ein lustiges Wahrsagespiel";
+      document.getElementById("subtitle").innerHTML =
+        "Ein lustiges Wahrsagespiel";
       document.getElementById("reload").value = "Neue Weissagung";
       break;
     case "fr":
       document.getElementById("title").innerHTML = "🔮Apprends ton avenir🔮";
-      document.getElementById("subtitle").innerHTML = "Un jeu prophétique drôle";
+      document.getElementById("subtitle").innerHTML =
+        "Un jeu prophétique drôle";
       document.getElementById("reload").value = "Nouvelle prophétie";
       break;
     case "la":
@@ -634,7 +698,8 @@ function writeText() {
       break;
     default:
       document.getElementById("title").innerHTML = "🔮Know your future🔮";
-      document.getElementById("subtitle").innerHTML = "A funny fortune teller game";
+      document.getElementById("subtitle").innerHTML =
+        "A funny fortune teller game";
       document.getElementById("reload").value = "New prophecy";
   }
 }
