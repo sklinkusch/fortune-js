@@ -13,8 +13,8 @@ const fortune_engl = (
     area === 1
       ? ` of ${area} square meter`
       : area > 1
-      ? ` of ${area} square meters`
-      : "";
+        ? ` of ${area} square meters`
+        : "";
   return `You will be ${job} ${loc}, married to ${partn} with ${child} living ${house}${sqm}.`;
 };
 // Function to create the German fortune sentence
@@ -32,8 +32,8 @@ const fortune_germ = (
     area === 1
       ? " mit einem Quadratmeter Wohnfläche"
       : area > 1
-      ? ` mit ${area} Quadratmetern Wohnfläche`
-      : "";
+        ? ` mit ${area} Quadratmetern Wohnfläche`
+        : "";
   let job_ft;
   let loc_ft;
   if (
@@ -74,14 +74,14 @@ const fortune_fr = (
     numch === 0
       ? `n'auras pas d'enfants`
       : numch === 1
-      ? `auras un enfant`
-      : `auras ${numch} enfants`;
+        ? `auras un enfant`
+        : `auras ${numch} enfants`;
   let sqm =
     area === 1
       ? ` d'un mètre carré`
       : area > 1
-      ? ` de ${area} mètres carré`
-      : "";
+        ? ` de ${area} mètres carré`
+        : "";
   let job_ft;
   let loc_ft;
   if (/ en$/.test(job) && /^la /.test(loc)) {
@@ -129,14 +129,14 @@ const fortune_la = (
     numch === 0
       ? "non erunt filii"
       : numch === 1
-      ? "erit filius"
-      : `erunt ${numch} filii`;
+        ? "erit filius"
+        : `erunt ${numch} filii`;
   let sqm =
     area == 1
       ? "unius metri quadrati"
       : area > 1
-      ? `${area} metrorum quadratorum`
-      : "";
+        ? `${area} metrorum quadratorum`
+        : "";
   return `Eris ${job} ${loc}, ${marie} cum ${partn}, tibi ${child} ${house} ${sqm}.`;
 };
 // Italian function
@@ -156,42 +156,48 @@ const fortune_it = (
     numch === 0
       ? "alcuno bambino"
       : numch === 1
-      ? "un bambino"
-      : `${numch} bambini`;
+        ? "un bambino"
+        : `${numch} bambini`;
   let sqm =
     area === 1
       ? "di un metro quadrato"
       : area > 1
-      ? `di ${area} metri quadrati`
-      : "";
+        ? `di ${area} metri quadrati`
+        : "";
   let job_ft;
   let loc_ft;
-  if (/in$/.test(job) && /^nel/.test(loc)) {
-    job_ft = job.replace(" in", "");
+  if (job.endsWith('in') && /^nel/.test(loc)) {
+    job_ft = job.slice(0, -3);
     loc_ft = loc;
-  } else if (/in$/.test(job) && /^nello/.test(loc)) {
-    job_ft = job.replace(" in", "");
+  } else if (job.endsWith('in') && /^nello/.test(loc)) {
+    job_ft = job.slice(0, -3);
     loc_ft = loc;
-  } else if (/in$/.test(job) && /^nei/.test(loc)) {
-    job_ft = job.replace(" in", "");
+  } else if (job.endsWith('in') && /^nei/.test(loc)) {
+    job_ft = job.slice(0, -3);
     loc_ft = loc;
-  } else if (/in$/.test(job) && /^negli/.test(loc)) {
-    job_ft = job.replace(" in", "");
+  } else if (job.endsWith('in') && /^negli/.test(loc)) {
+    job_ft = job.slice(0, -3);
     loc_ft = loc;
-  } else if (/di$/.test(job) && /^nei/.test(loc)) {
-    job_ft = job.replace(" di", "");
+  } else if (job.endsWith('di') && /^nei/.test(loc)) {
+    job_ft = job.slice(0, -3);
     loc_ft = loc.replace("nei ", "dei ");
-  } else if (/di$/.test(job) && /^nel/.test(loc)) {
-    job_ft = job.replace(" di", "");
+  } else if (job.endsWith('di') && /^nel/.test(loc)) {
+    job_ft = job.slice(0, -3);
     loc_ft = loc.replace("nel ", "del ");
-  } else if (/di$/.test(job) && /^negli/.test(loc)) {
-    job_ft = job.replace(" di", "");
+  } else if (job.endsWith('di') && /^negli/.test(loc)) {
+    job_ft = job.slice(0, -3);
     loc_ft = loc.replace("negli ", "degli ");
+  } else if (job.endsWith('di') && /^[AEIOU]/.test(loc)) {
+    job_ft = job.slice(0, -3);
+    loc_ft = `dell'${loc}`;
+  } else if (job.endsWith('di')) {
+    job_ft = job.slice(0, -3);
+    loc_ft = `della ${loc}`;
   } else {
     job_ft = job;
     loc_ft = loc;
   }
-  return `Tu sarai ${job_ft} ${loc_ft}, ${marie} con ${partn}, tu avrai ${child} e abiterai ${house} ${sqm}.`;
+  return `Tu sarai ${job_ft} ${loc_ft}, ${marie} con ${partn}, tu avrai ${child} e ${house} ${sqm}.`;
 };
 // Functions to create random values
 const randomize = MyArray => Math.floor(Math.random() * MyArray.length);
@@ -560,38 +566,38 @@ let geolocs_it = [
 let partners_it = [
   "un uomo",
   "una donna",
-  "più uomi simultaneamente",
-  "più donne simultaneamente",
-  "più uomi e donne simultaneamente",
+  "diversi uomini allo stesso tempo",
+  "diverse donne allo stesso tempo",
+  "diverse donne e uomini allo stesso tempo",
   "nessuno",
-  "cane",
-  "gatto",
-  "criceto",
-  "pocellino d'India",
-  "maiale",
-  "vacca",
-  "toro",
-  "orso",
-  "tartaruga",
-  "lepre",
-  "cavallo",
-  "pecora",
-  "capra",
-  "professione"
+  "il tuo cane",
+  "il tuo gatto",
+  "il tuo criceto",
+  "il tuo pocellino d'India",
+  "il tuo maiale",
+  "la tua mucca",
+  "il tuo toro",
+  "il tuo orso",
+  "la tua tartaruga",
+  "la tua lepre",
+  "il tuo cavallo",
+  "la tua pecora",
+  "la tua capra",
+  "la tua professione"
 ];
 let houses_it = [
-  "in casa",
-  "in appartamento",
-  "in attico",
-  "in i gabinetti pubblici",
-  "in castello",
-  "in bordello",
-  "in cella",
-  "in tenda",
-  "in roulotte",
-  "in cabina del telefono",
-  "in stalla",
-  "senza tetto"
+  "abiterai in una casa",
+  "abiterai in un appartamento",
+  "abiterai in un attico",
+  "abiterai in un gabinetto pubblico",
+  "abiterai in un castello",
+  "abiterai in un bordello",
+  "abiterai in una cella",
+  "abiterai in una tenda",
+  "abiterai in un roulotte",
+  "abiterai in una cabina del telefono",
+  "abiterai in una stalla",
+  "serai senza tetto"
 ];
 function newFortune() {
   let LangSel = document.getElementById("language").value;
@@ -670,6 +676,7 @@ function newFortune() {
     case "in a house":
     case "habiteras dans une maison":
     case "habitabisque in mansione":
+    case "abiterai in una casa":
       minimum = 50;
       maximum = 201;
       break;
@@ -677,12 +684,14 @@ function newFortune() {
     case "in a flat":
     case "habiteras dans un appartement":
     case "habitabisque in domicilio":
+    case "abiterai in un appartamento":
       minimum = 30;
       maximum = 101;
       break;
     case "in einem Penthouse":
     case "in a penthouse":
     case "habiteras dans un penthouse":
+    case "abiterai in un attico":
       minimum = 500;
       maximum = 1001;
       break;
@@ -690,6 +699,7 @@ function newFortune() {
     case "in a public restroom":
     case "habiteras dans des toilettes publiques":
     case "habitabisque in latrina publica":
+    case "abiterai in un gabinetto pubblico":
       minimum = 10;
       maximum = 41;
       break;
@@ -697,6 +707,7 @@ function newFortune() {
     case "in a palace":
     case "habiteras dans un château":
     case "habitabisque in castello":
+    case "abiterai in un castello":
       minimum = 500;
       maximum = 6001;
       break;
@@ -704,6 +715,7 @@ function newFortune() {
     case "in a whorehouse":
     case "habiteras dans une maison close":
     case "habitabisque in lupanare":
+    case "abiterai in un bordello":
       minimum = 50;
       maximum = 3001;
       break;
@@ -711,6 +723,7 @@ function newFortune() {
     case "in a prison cell":
     case "habiteras dans une cellule de prison":
     case "habitabisque in carcere":
+    case "abiterai in una cella":
       minimum = 8;
       maximum = 11;
       break;
@@ -718,6 +731,7 @@ function newFortune() {
     case "in a tent":
     case "habiteras dans une tente":
     case "habitabisque in tabernaculo":
+    case "abiterai in una tenda":
       minimum = 4;
       maximum = 21;
       break;
@@ -725,6 +739,7 @@ function newFortune() {
     case "in a trailer":
     case "habiteras dans une caravane":
     case "habitabisque in tracto peregetico":
+    case "abiterai in un roulotte":
       minimum = 8;
       maximum = 21;
       break;
@@ -732,6 +747,7 @@ function newFortune() {
     case "in a phone box":
     case "habiteras dans une cabine téléphonique":
     case "habitabisque in cabina telephoni":
+    case "abiterai in una cabina del telefono":
       minimum = 1;
       maximum = 5;
       break;
@@ -739,6 +755,7 @@ function newFortune() {
     case "in a stable":
     case "habiteras dans une étable":
     case "habitabisque in stabulo":
+    case "abiterai in una stalla":
       minimum = 30;
       maximum = 5001;
       break;
@@ -746,6 +763,7 @@ function newFortune() {
     case "on the street":
     case "seras sans domicile fixe":
     case "erisque domo carens":
+    case "serai senza tetto":
       minimum = 0;
       maximum = 1;
       break;
