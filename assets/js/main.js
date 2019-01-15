@@ -38,7 +38,14 @@ const fortune_germ = (
   let loc_ft;
   if (
     /von/.test(job) &&
+<<<<<<< HEAD
     (loc === "den Vereinigten Staaten von Amerika" || loc === "der Türkei")
+=======
+    (loc === "den Vereinigten Staaten von Amerika" ||
+      loc === "der Türkei" ||
+      loc === "den Malediven" ||
+      loc === "der Schweiz")
+>>>>>>> master
   ) {
     job_ft = job.substr(0, job.length - 4);
     loc_ft = loc.replace("den", "der");
@@ -136,6 +143,7 @@ const fortune_la = (
       : "";
   return `Eris ${job} ${loc}, ${marie} cum ${partn}, tibi ${child} ${house} ${sqm}.`;
 };
+<<<<<<< HEAD
 // Italian function
 const fortune_it = (
   numch = 0,
@@ -147,6 +155,8 @@ const fortune_it = (
 ) => {
   return `Tu sarai ${job} ${loc}, ${marie} con ${partn}, tu avrai ${child} e abiterai ${house} ${sqm}.`;
 };
+=======
+>>>>>>> master
 // Functions to create random values
 const randomize = MyArray => Math.floor(Math.random() * MyArray.length);
 const randomvalue = (min, max) => Math.floor(Math.random() * (max - min) + min);
@@ -168,7 +178,9 @@ let jobs_engl = [
   "the pope in",
   "a CEO in",
   "a clown in",
-  "a bank robber in"
+  "a bank robber in",
+  "a diving instructor in",
+  "a skiing instructor in"
 ];
 let geolocs_engl = [
   "North Korea",
@@ -187,7 +199,10 @@ let geolocs_engl = [
   "Saudi-Arabia",
   "France",
   "Turkey",
-  "Russia"
+  "Russia",
+  "Switzerland",
+  "Nepal",
+  "Maldives"
 ];
 let partners_engl = [
   "a man",
@@ -223,6 +238,8 @@ let houses_engl = [
   "in a trailer",
   "in a phone box",
   "in a stable",
+  "in a swimming pool",
+  "in a cave",
   "on the street"
 ];
 let jobs_germ = [
@@ -242,7 +259,9 @@ let jobs_germ = [
   "der Papst in",
   "ein Vorstandsvorsitzender in",
   "ein Clown in",
-  "ein Bankräuber in"
+  "ein Bankräuber in",
+  "ein Tauchlehrer in",
+  "ein Skilehrer in"
 ];
 let geolocs_germ = [
   "Nordkorea",
@@ -261,7 +280,10 @@ let geolocs_germ = [
   "Saudi-Arabien",
   "Frankreich",
   "der Türkei",
-  "Russland"
+  "Russland",
+  "der Schweiz",
+  "Nepal",
+  "den Malediven"
 ];
 let partners_germ = [
   "einem Mann",
@@ -297,6 +319,8 @@ let houses_germ = [
   "in einem Wohnwagen",
   "in einer Telefonzelle",
   "in einem Stall",
+  "in einem Schwimmbecken",
+  "in einer Höhle",
   "auf der Straße"
 ];
 let jobs_fr = [
@@ -316,7 +340,9 @@ let jobs_fr = [
   "le pape en",
   "un président du directoire en",
   "un clown en",
-  "un voleur de banque en"
+  "un voleur de banque en",
+  "un instructeur de plongée en",
+  "un moniteur de ski en"
 ];
 let geolocs_fr = [
   "la Corée du Nord",
@@ -335,7 +361,10 @@ let geolocs_fr = [
   "l'Arabie saoudite",
   "la France",
   "la Turquie",
-  "la Russie"
+  "la Russie",
+  "la Suisse",
+  "le Népal",
+  "les Maldives"
 ];
 let partners_fr = [
   "un homme",
@@ -371,6 +400,8 @@ let houses_fr = [
   "habiteras dans une caravane",
   "habiteras dans une cabine téléphonique",
   "habiteras dans une étable",
+  "habiteras dans une piscine",
+  "habiteras dans une grotte",
   "seras sans domicile fixe"
 ];
 let jobs_la = [
@@ -390,7 +421,9 @@ let jobs_la = [
   "pontifex maximus",
   "praeses directorati",
   "morus",
-  "raptor argentariae"
+  "raptor argentariae",
+  "instructor demergendus",
+  "instructor nartis currendus"
 ];
 let geolocs_la = [
   "in Corea Septentrionale",
@@ -399,7 +432,7 @@ let geolocs_la = [
   "in Germania",
   "in Italia",
   "in Finnia",
-  "in Africa Australie",
+  "in Africa Australe",
   "in Argentina",
   "in Mexico",
   "in Civitate Vaticana",
@@ -409,7 +442,10 @@ let geolocs_la = [
   "in Arabia Saudita",
   "in Gallia",
   "in Turcia",
-  "in Russia"
+  "in Russia",
+  "in Helvetica",
+  "in Nepalia",
+  "in Insulae Maldivae"
 ];
 let partners_la = [
   "viro",
@@ -443,6 +479,8 @@ let houses_la = [
   "habitabisque in tracto periegetico",
   "habitabisque in cabina telephoni",
   "habitabisque in stabulo",
+  "habitabisque in thermae",
+  "habitabisque in caverna",
   "erisque domo carens"
 ];
 let jobs_it = [
