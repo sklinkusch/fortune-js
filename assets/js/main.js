@@ -38,14 +38,10 @@ const fortune_germ = (
   let loc_ft;
   if (
     /von/.test(job) &&
-<<<<<<< HEAD
-    (loc === "den Vereinigten Staaten von Amerika" || loc === "der Türkei")
-=======
     (loc === "den Vereinigten Staaten von Amerika" ||
       loc === "der Türkei" ||
       loc === "den Malediven" ||
       loc === "der Schweiz")
->>>>>>> master
   ) {
     job_ft = job.substr(0, job.length - 4);
     loc_ft = loc.replace("den", "der");
@@ -143,7 +139,6 @@ const fortune_la = (
       : "";
   return `Eris ${job} ${loc}, ${marie} cum ${partn}, tibi ${child} ${house} ${sqm}.`;
 };
-<<<<<<< HEAD
 // Italian function
 const fortune_it = (
   numch = 0,
@@ -153,10 +148,24 @@ const fortune_it = (
   job = "dottore",
   area = 1
 ) => {
+  let marie =
+    /regina/.test(job) || /imperatrice/.test(job) || /prostituta/.test(job)
+      ? "sposata"
+      : "sposato";
+  let child =
+    numch === 0
+      ? "alcuno bambino"
+      : numch === 1
+      ? "un bambino"
+      : `${numch} bambini`;
+  let sqm =
+    area === 1
+      ? "di un metro quadrato"
+      : area > 1
+      ? `di ${area} metri quadrati`
+      : "";
   return `Tu sarai ${job} ${loc}, ${marie} con ${partn}, tu avrai ${child} e abiterai ${house} ${sqm}.`;
 };
-=======
->>>>>>> master
 // Functions to create random values
 const randomize = MyArray => Math.floor(Math.random() * MyArray.length);
 const randomvalue = (min, max) => Math.floor(Math.random() * (max - min) + min);
@@ -492,7 +501,7 @@ let jobs_it = [
   "il presidente di",
   "il dittatore di",
   "il re di",
-  "la regina di"
+  "la regina di",
   "l'imperatore di",
   "l'imperatrice di",
   "il Dalai Lama in",
@@ -543,7 +552,7 @@ let partners_it = [
   "capra",
   "professione"
 ];
-let houses_fr = [
+let houses_it = [
   "in casa",
   "in appartamento",
   "in attico",
@@ -576,6 +585,9 @@ function newFortune() {
     case "la":
       lang = "la";
       break;
+    case "it":
+      lang = "it";
+      break;
   }
   let jobnr;
   let geonr;
@@ -606,6 +618,14 @@ function newFortune() {
       partnr = randomize(partners_la);
       housenr = randomize(houses_la);
       house = houses_la[housenr];
+      break;
+    case "it":
+    case "it-IT":
+      jobnr = randomize(jobs_it);
+      geonr = randomize(geolocs_it);
+      partnr = randomize(partners_it);
+      housenr = randomize(houses_it);
+      house = houses_it[housenr];
       break;
     default:
       jobnr = randomize(jobs_engl);
@@ -742,6 +762,17 @@ function newFortune() {
         areanr
       );
       break;
+    case "it":
+    case "it-IT":
+      document.getElementById("fortune").innerHTML = fortune_it(
+        childnr,
+        partners_it[partnr],
+        geolocs_it[geonr],
+        houses_it[housenr],
+        jobs_it[jobnr],
+        areanr
+      );
+      break;
     default:
       document.getElementById("fortune").innerHTML = fortune_engl(
         childnr,
@@ -772,6 +803,9 @@ function writeText() {
     case "la":
       lang = "la";
       break;
+    case "it":
+      lang = "it";
+      break;
   }
   switch (lang) {
     case "de":
@@ -790,6 +824,12 @@ function writeText() {
       document.getElementById("title").innerHTML = "🔮Res futurae tuae🔮";
       document.getElementById("subtitle").innerHTML = "Ludus divinans hilarus";
       document.getElementById("reload").value = "Oraculum novum";
+      break;
+    case "it":
+      document.getElementById("title").innerHTML = "🔮L'Avvenire tuo🔮";
+      document.getElementById("subtitle").innerHTML =
+        "Un gioco divinatorio allegro";
+      document.getElementById("reload").value = "Prossima divinazione";
       break;
     default:
       document.getElementById("title").innerHTML = "🔮Know your future🔮";
