@@ -13,8 +13,8 @@ const fortune_engl = (
     area === 1
       ? ` of ${area} square meter`
       : area > 1
-        ? ` of ${area} square meters`
-        : "";
+      ? ` of ${area} square meters`
+      : "";
   return `You will be ${job} ${loc}, married to ${partn} with ${child} living ${house}${sqm}.`;
 };
 // Function to create the German fortune sentence
@@ -32,8 +32,8 @@ const fortune_germ = (
     area === 1
       ? " mit einem Quadratmeter Wohnfläche"
       : area > 1
-        ? ` mit ${area} Quadratmetern Wohnfläche`
-        : "";
+      ? ` mit ${area} Quadratmetern Wohnfläche`
+      : "";
   let job_ft;
   let loc_ft;
   if (
@@ -74,14 +74,14 @@ const fortune_fr = (
     numch === 0
       ? `n'auras pas d'enfants`
       : numch === 1
-        ? `auras un enfant`
-        : `auras ${numch} enfants`;
+      ? `auras un enfant`
+      : `auras ${numch} enfants`;
   let sqm =
     area === 1
       ? ` d'un mètre carré`
       : area > 1
-        ? ` de ${area} mètres carré`
-        : "";
+      ? ` de ${area} mètres carré`
+      : "";
   let job_ft;
   let loc_ft;
   if (/ en$/.test(job) && /^la /.test(loc)) {
@@ -129,14 +129,14 @@ const fortune_la = (
     numch === 0
       ? "non erunt filii"
       : numch === 1
-        ? "erit filius"
-        : `erunt ${numch} filii`;
+      ? "erit filius"
+      : `erunt ${numch} filii`;
   let sqm =
     area == 1
       ? "unius metri quadrati"
       : area > 1
-        ? `${area} metrorum quadratorum`
-        : "";
+      ? `${area} metrorum quadratorum`
+      : "";
   return `Eris ${job} ${loc}, ${marie} cum ${partn}, tibi ${child} ${house} ${sqm}.`;
 };
 // Italian function
@@ -156,47 +156,47 @@ const fortune_it = (
     numch === 0
       ? "alcuno bambino"
       : numch === 1
-        ? "un bambino"
-        : `${numch} bambini`;
+      ? "un bambino"
+      : `${numch} bambini`;
   let sqm =
     area === 1
       ? "di un metro quadrato"
       : area > 1
-        ? `di ${area} metri quadrati`
-        : "";
+      ? `di ${area} metri quadrati`
+      : "";
   let job_ft;
   let loc_ft;
-  if (job.endsWith('in') && /^nelle/.test(loc)) {
+  if (job.endsWith("in") && /^nelle/.test(loc)) {
     job_ft = job.slice(0, -3);
     loc_ft = loc;
-  } else if (job.endsWith('in') && /^nello/.test(loc)) {
+  } else if (job.endsWith("in") && /^nello/.test(loc)) {
     job_ft = job.slice(0, -3);
     loc_ft = loc;
-  } else if (job.endsWith('in') && /^nel/.test(loc)) {
+  } else if (job.endsWith("in") && /^nel/.test(loc)) {
     job_ft = job.slice(0, -3);
     loc_ft = loc;
-  } else if (job.endsWith('in') && /^nei/.test(loc)) {
+  } else if (job.endsWith("in") && /^nei/.test(loc)) {
     job_ft = job.slice(0, -3);
     loc_ft = loc;
-  } else if (job.endsWith('in') && /^negli/.test(loc)) {
+  } else if (job.endsWith("in") && /^negli/.test(loc)) {
     job_ft = job.slice(0, -3);
     loc_ft = loc;
-  } else if (job.endsWith('di') && /^nelle/.test(loc)) {
+  } else if (job.endsWith("di") && /^nelle/.test(loc)) {
     job_ft = job.slice(0, -3);
     loc_ft = loc.replace("nelle ", "delle ");
-  } else if (job.endsWith('di') && /^nello/.test(loc)) {
+  } else if (job.endsWith("di") && /^nello/.test(loc)) {
     job_ft = job.slice(0, -3);
     loc_ft = loc.replace("nello ", "dello ");
-  } else if (job.endsWith('di') && /^nel/.test(loc)) {
+  } else if (job.endsWith("di") && /^nel/.test(loc)) {
     job_ft = job.slice(0, -3);
     loc_ft = loc.replace("nel ", "del ");
-  } else if (job.endsWith('di') && /^negli/.test(loc)) {
+  } else if (job.endsWith("di") && /^negli/.test(loc)) {
     job_ft = job.slice(0, -3);
     loc_ft = loc.replace("negli ", "degli ");
-  } else if (job.endsWith('di') && /^[AEIOU]/.test(loc)) {
+  } else if (job.endsWith("di") && /^[AEIOU]/.test(loc)) {
     job_ft = job.slice(0, -3);
     loc_ft = `dell'${loc}`;
-  } else if (job.endsWith('di')) {
+  } else if (job.endsWith("di")) {
     job_ft = job.slice(0, -3);
     loc_ft = `della ${loc}`;
   } else {
@@ -549,8 +549,8 @@ let jobs_it = [
   "un amministratore delegato in",
   "un buffone in",
   "un rapinatore in banca in",
-  "un istruttore di immersioni",
-  "un maestro di sci"
+  "un istruttore di immersioni in",
+  "un maestro di sci in"
 ];
 let geolocs_it = [
   "Corea del Nord",
