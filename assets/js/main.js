@@ -13,8 +13,8 @@ const fortune_engl = (
     area === 1
       ? ` of ${area} square meter`
       : area > 1
-      ? ` of ${area} square meters`
-      : "";
+        ? ` of ${area} square meters`
+        : "";
   return `You will be ${job} ${loc}, married to ${partn} with ${child} living ${house}${sqm}.`;
 };
 // Function to create the German fortune sentence
@@ -32,8 +32,8 @@ const fortune_germ = (
     area === 1
       ? " mit einem Quadratmeter Wohnfläche"
       : area > 1
-      ? ` mit ${area} Quadratmetern Wohnfläche`
-      : "";
+        ? ` mit ${area} Quadratmetern Wohnfläche`
+        : "";
   let job_ft;
   let loc_ft;
   if (
@@ -48,8 +48,17 @@ const fortune_germ = (
   } else if (/von/.test(job) && loc === "Vatikan") {
     job_ft = job.replace("von", "des");
     loc_ft = loc.padEnd(8, "s");
+  } else if (/von/.test(job) && loc === "dem Vereinigten Königreich") {
+    job_ft = job.replace("von", "des");
+    loc_ft = "Vereinigten Königreichs";
   } else if (/ in/.test(job) && loc === "Vatikan") {
     job_ft = job.replace(" in", " im");
+    loc_ft = loc;
+  } else if (/ in/.test(job) && loc === "dem Vereinigten Königreich") {
+    job_ft = job.replace(" in", " im");
+    loc_ft = loc.slice(4);
+  } else if (job.endsWith('in') && loc === "den Malediven") {
+    job_ft = job.replace(" in", " auf");
     loc_ft = loc;
   } else {
     job_ft = job;
@@ -74,14 +83,14 @@ const fortune_fr = (
     numch === 0
       ? `n'auras pas d'enfants`
       : numch === 1
-      ? `auras un enfant`
-      : `auras ${numch} enfants`;
+        ? `auras un enfant`
+        : `auras ${numch} enfants`;
   let sqm =
     area === 1
       ? ` d'un mètre carré`
       : area > 1
-      ? ` de ${area} mètres carré`
-      : "";
+        ? ` de ${area} mètres carré`
+        : "";
   let job_ft;
   let loc_ft;
   if (/ en$/.test(job) && /^la /.test(loc)) {
@@ -129,14 +138,14 @@ const fortune_la = (
     numch === 0
       ? "non erunt filii"
       : numch === 1
-      ? "erit filius"
-      : `erunt ${numch} filii`;
+        ? "erit filius"
+        : `erunt ${numch} filii`;
   let sqm =
     area == 1
       ? "unius metri quadrati"
       : area > 1
-      ? `${area} metrorum quadratorum`
-      : "";
+        ? `${area} metrorum quadratorum`
+        : "";
   return `Eris ${job} ${loc}, ${marie} cum ${partn}, tibi ${child} ${house} ${sqm}.`;
 };
 // Italian function
@@ -156,14 +165,14 @@ const fortune_it = (
     numch === 0
       ? "alcuno bambino"
       : numch === 1
-      ? "un bambino"
-      : `${numch} bambini`;
+        ? "un bambino"
+        : `${numch} bambini`;
   let sqm =
     area === 1
       ? "di un metro quadrato"
       : area > 1
-      ? `di ${area} metri quadrati`
-      : "";
+        ? `di ${area} metri quadrati`
+        : "";
   let job_ft;
   let loc_ft;
   if (job.endsWith("in") && /^nelle/.test(loc)) {
@@ -233,7 +242,7 @@ let jobs_engl = [
 let geolocs_engl = [
   "North Korea",
   "Japan",
-  "the USA",
+  "the United States",
   "Germany",
   "Italy",
   "Finland",
@@ -250,7 +259,11 @@ let geolocs_engl = [
   "Russia",
   "Switzerland",
   "Nepal",
-  "Maldives"
+  "Maldives",
+  "the United Kingdom",
+  "Hungary",
+  "Poland",
+  "Austria"
 ];
 let partners_engl = [
   "a man",
@@ -331,7 +344,11 @@ let geolocs_germ = [
   "Russland",
   "der Schweiz",
   "Nepal",
-  "den Malediven"
+  "den Malediven",
+  "dem Vereinigten Königreich",
+  "Ungarn",
+  "Polen",
+  "Österreich"
 ];
 let partners_germ = [
   "einem Mann",
@@ -412,7 +429,11 @@ let geolocs_fr = [
   "la Russie",
   "la Suisse",
   "le Népal",
-  "les Maldives"
+  "les Maldives",
+  "le Royaume-Uni",
+  "l'Hongrie",
+  "la Pologne",
+  "l'Autriche"
 ];
 let partners_fr = [
   "un homme",
@@ -491,9 +512,13 @@ let geolocs_la = [
   "in Gallia",
   "in Turcia",
   "in Russia",
-  "in Helvetica",
+  "in Helvetia",
   "in Nepalia",
-  "in Insulae Maldivae"
+  "in Insulae Maldivae",
+  "in Britanniarum Regnum",
+  "in Hungaria",
+  "in Polonia",
+  "in Austria"
 ];
 let partners_la = [
   "viro",
@@ -572,7 +597,11 @@ let geolocs_it = [
   "Russia",
   "Svizzera",
   "nel Nepal",
-  "nelle Maldive"
+  "nelle Maldive",
+  "nel Regno Unito",
+  "Ungheria",
+  "Polonia",
+  "Austria"
 ];
 let partners_it = [
   "un uomo",
