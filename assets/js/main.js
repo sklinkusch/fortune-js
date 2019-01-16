@@ -507,7 +507,7 @@ let partners_la = [
   "criceto tuo",
   "cavia porcellus tua",
   "porco tuo",
-  "bovo tuo",
+  "bove tuo",
   "urso tuo",
   "testudine tua",
   "lepo tuo",
