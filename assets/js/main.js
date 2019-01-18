@@ -723,11 +723,11 @@ function newFortune() {
   let minimum;
   let maximum;
   switch (house) {
-    case "in einem Haus":
-    case "in a house":
-    case "habiteras dans une maison":
-    case "habitabisque in mansione":
-    case "abiterai in una casa":
+    case houses_germ[0]:
+    case houses_engl[0]:
+    case houses_fr[0]:
+    case houses_la[0]:
+    case houses_it[0]:
       minimum = 50;
       maximum = 201;
       break;
