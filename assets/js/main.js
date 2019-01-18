@@ -357,8 +357,6 @@ function newFortune() {
   //Function call and output to the HTML
   switch (lang) {
     case "de":
-    case "de-AT":
-    case "de-DE":
       document.getElementById("fortune").innerHTML = fortune_germ(
         childnr,
         partners[partnr].de,
@@ -369,7 +367,6 @@ function newFortune() {
       );
       break;
     case "fr":
-    case "fr-FR":
       document.getElementById("fortune").innerHTML = fortune_fr(
         childnr,
         partners[partnr].fr,
@@ -390,7 +387,6 @@ function newFortune() {
       );
       break;
     case "it":
-    case "it-IT":
       document.getElementById("fortune").innerHTML = fortune_it(
         childnr,
         partners[partnr].it,
