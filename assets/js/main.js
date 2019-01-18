@@ -247,7 +247,7 @@ function randomize(MyArray) {
 function randomvalue(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
-// Arrays for possible solutions (english)
+// Arrays for possible solutions
 var jobs = [
   { en: "a doctor in", de: "ein Arzt in", fr: "un médecin en", la: "medicus", it: "un dottore in" },
   { en: "a drug dealer in", de: "ein Drogendealer in", fr: "un narcotrafiquant en", la: "mercator medicamentorum", it: "un narcotrafficante in" },
@@ -317,211 +317,30 @@ var partners = [
   { en: "your goat", de: "deiner Ziege", fr: "ta chèvre", la: "capra tua", it: "la tua capra" },
   { en: "your job", de: "deinem Beruf", fr: "ta profession", la: "professione tua", it: "la tua professione" }
 ]
-let houses_engl = [
-  "in a house",
-  "in a flat",
-  "in a public restroom",
-  "in a palace",
-  "in a whorehouse",
-  "in a prison cell",
-  "in a tent",
-  "in a trailer",
-  "in a phone box",
-  "in a stable",
-  "in a swimming pool",
-  "in a cave",
-  "on the street"
-];
-let houses_germ = [
-  "in einem Haus",
-  "in einer Wohnung",
-  "in einer öffentlichen Toilette",
-  "in einem Schloss",
-  "in einem Bordell",
-  "in einer Gefängniszelle",
-  "in einem Zelt",
-  "in einem Wohnwagen",
-  "in einer Telefonzelle",
-  "in einem Stall",
-  "in einem Schwimmbecken",
-  "in einer Höhle",
-  "auf der Straße"
-];
-let houses_fr = [
-  "habiteras dans une maison",
-  "habiteras dans un appartement",
-  "habiteras dans des toilettes publiques",
-  "habiteras dans un château",
-  "habiteras dans une maison close",
-  "habiteras dans une cellule de prison",
-  "habiteras dans une tente",
-  "habiteras dans une caravane",
-  "habiteras dans une cabine téléphonique",
-  "habiteras dans une étable",
-  "habiteras dans une piscine",
-  "habiteras dans une grotte",
-  "seras sans domicile fixe"
-];
-let houses_la = [
-  "habitabisque in mansione",
-  "habitabisque in domicilio",
-  "habitabisque in latrina publica",
-  "habitabisque in castello",
-  "habitabisque in lupanare",
-  "habitabisque in carcere",
-  "habitabisque in tabernaculo",
-  "habitabisque in tracto periegetico",
-  "habitabisque in cabina telephoni",
-  "habitabisque in stabulo",
-  "habitabisque in thermae",
-  "habitabisque in caverna",
-  "erisque domo carens"
-];
-let houses_it = [
-  "abiterai in una casa",
-  "abiterai in un appartamento",
-  "abiterai in un gabinetto pubblico",
-  "abiterai in un castello",
-  "abiterai in un bordello",
-  "abiterai in una cella",
-  "abiterai in una tenda",
-  "abiterai in un roulotte",
-  "abiterai in una cabina del telefono",
-  "abiterai in una stalla",
-  "abiterai in una piscina",
-  "abiterai in una grotta",
-  "serai senza tetto"
-];
+var houses = [
+  { en: "in a house", de: "in einem Haus", fr: "habiteras dans une maison", la: "habitabisque in mansione", it: "abiterai in una casa", min: 50, max: 1001 },
+  { en: "in a flat", de: "in einer Wohnung", fr: "habiteras dans un appartement", la: "habitabisque in domicilio", it: "abiterai in un appartamento", min: 30, max: 101 },
+  { en: "in a public restroom", de: "in einer öffentlichen Toilette", fr: "habiteras dans des toilettes publiques", la: "habitabisque in latrina publica", it: "abiterai in un gabinetto pubblico", min: 10, max: 41 },
+  { en: "in a palace", de: "in einem Palast", fr: "habiteras dans un palais", la: "habitabisque in palatio", it: "abiterai in un palazzo", min: 500, max: 6001 },
+  { en: "in a castle", de: "in einem Schloss", fr: "habiteras dans un château", la: "habitabisque in castello", it: "abiterai in un castello", min: 500, max: 6001 },
+  { en: "in a whorehouse", de: "in einem Bordell", fr: "habiteras dans une maison close", la: "habitabisque in lupanare", it: "abiterai in un bordello", min: 50, max: 3001 },
+  { en: "in a prison cell", de: "in einer Gefängniszelle", fr: "habiteras dans une cellule de prison", la: "habitabisque in carcere", it: "abiterai in una cella", min: 8, max: 11 },
+  { en: "in a tent", de: "in einem Zelt", fr: "habiteras dans une tente", la: "habitabisque in tabernaculo", it: "abiterai in una tenda", min: 4, max: 21 },
+  { en: "in a trailer", de: "in einem Wohnwagen", fr: "habiteras dans une caravane", la: "habitabisque in tracto periegetico", it: "abiterai in un roulotte", min: 8, max: 21 },
+  { en: "in a phone box", de: "in einer Telefonzelle", fr: "habiteras dans une cabine téléphonique", la: "habitabisque in cabina telephoni", it: "abiterai in una cabina del telefono", min: 1, max: 5 },
+  { en: "in a stable", de: "in einem Stall", fr: "habiteras dans une étable", la: "habitabisque in stabulo", it: "abiterai in una stalla", min: 30, max: 5001 },
+  { en: "in a swimming pool", de: "in einem Schwimmbecken", fr: "habiteras dans une piscine", la: "habitabisque in thermis", it: "abiterai in una piscina", min: 10, max: 1052 },
+  { en: "in a cave", de: "in einer Höhle", fr: "habiteras dans une grotte", la: "habitabisque in caverna", it: "abiterai in una grotta", min: 100, max: 275000 },
+  { en: "on the street", de: "auf der Straße", fr: "seras sans domicile fixe", la: "erisque domo carens", it: "serai senza tetto", min: 0, max: 1 }
+]
 function newFortune() {
   let lang = getLanguage();
   let jobnr = randomize(jobs);
   let geonr = randomize(geolocs);
   let partnr = randomize(partners);
-  let housenr;
-  let house;
-  switch (lang) {
-    case "de":
-    case "de-DE":
-    case "de-AT":
-      housenr = randomize(houses_germ);
-      house = houses_germ[housenr];
-      break;
-    case "fr":
-    case "fr-FR":
-      housenr = randomize(houses_fr);
-      house = houses_fr[housenr];
-      break;
-    case "la":
-      housenr = randomize(houses_la);
-      house = houses_la[housenr];
-      break;
-    case "it":
-    case "it-IT":
-      housenr = randomize(houses_it);
-      house = houses_it[housenr];
-      break;
-    default:
-      housenr = randomize(houses_engl);
-      house = houses_engl[housenr];
-  }
+  let housenr = randomize(houses);
   let childnr = randomvalue(0, 20);
-  // Adjust house size to the "house"
-  let minimum;
-  let maximum;
-  switch (house) {
-    case houses_germ[0]:
-    case houses_engl[0]:
-    case houses_fr[0]:
-    case houses_la[0]:
-    case houses_it[0]:
-      minimum = 50;
-      maximum = 1001;
-      break;
-    case houses_germ[1]:
-    case houses_engl[1]:
-    case houses_fr[1]:
-    case houses_la[1]:
-    case houses_it[1]:
-      minimum = 30;
-      maximum = 101;
-      break;
-    case houses_germ[2]:
-    case houses_engl[2]:
-    case houses_fr[2]:
-    case houses_la[2]:
-    case houses_it[2]:
-      minimum = 10;
-      maximum = 41;
-      break;
-    case houses_germ[3]:
-    case houses_engl[3]:
-    case houses_fr[3]:
-    case houses_la[3]:
-    case houses_it[3]:
-      minimum = 500;
-      maximum = 6001;
-      break;
-    case houses_germ[4]:
-    case houses_engl[4]:
-    case houses_fr[4]:
-    case houses_la[4]:
-    case houses_it[4]:
-      minimum = 50;
-      maximum = 3001;
-      break;
-    case houses_germ[5]:
-    case houses_engl[5]:
-    case houses_fr[5]:
-    case houses_la[5]:
-    case houses_it[5]:
-      minimum = 8;
-      maximum = 11;
-      break;
-    case houses_germ[6]:
-    case houses_engl[6]:
-    case houses_fr[6]:
-    case houses_la[6]:
-    case houses_it[6]:
-      minimum = 4;
-      maximum = 21;
-      break;
-    case houses_germ[7]:
-    case houses_engl[7]:
-    case houses_fr[7]:
-    case houses_la[7]:
-    case houses_it[7]:
-      minimum = 8;
-      maximum = 21;
-      break;
-    case houses_germ[8]:
-    case houses_engl[8]:
-    case houses_fr[8]:
-    case houses_la[8]:
-    case houses_it[8]:
-      minimum = 1;
-      maximum = 5;
-      break;
-    case houses_germ[9]:
-    case houses_engl[9]:
-    case houses_fr[9]:
-    case houses_la[9]:
-    case houses_it[9]:
-      minimum = 30;
-      maximum = 5001;
-      break;
-    case houses_germ[10]:
-    case houses_engl[10]:
-    case houses_fr[10]:
-    case houses_la[10]:
-    case houses_it[10]:
-      minimum = 0;
-      maximum = 1;
-      break;
-    default:
-      minimum = 1;
-      maximum = 1000;
-  }
-  let areanr = randomvalue(minimum, maximum);
+  let areanr = randomvalue(houses[housenr].min, houses[housenr].max);
   //Function call and output to the HTML
   switch (lang) {
     case "de":
@@ -531,7 +350,7 @@ function newFortune() {
         childnr,
         partners[partnr].de,
         geolocs[geonr].de,
-        houses_germ[housenr],
+        houses[housenr].de,
         jobs[jobnr].de,
         areanr
       );
@@ -542,7 +361,7 @@ function newFortune() {
         childnr,
         partners[partnr].fr,
         geolocs[geonr].fr,
-        houses_fr[housenr],
+        houses[housenr].fr,
         jobs[jobnr].fr,
         areanr
       );
@@ -552,7 +371,7 @@ function newFortune() {
         childnr,
         partners[partnr].la,
         geolocs[geonr].la,
-        houses_la[housenr],
+        houses[housenr].la,
         jobs[jobnr].la,
         areanr
       );
@@ -563,7 +382,7 @@ function newFortune() {
         childnr,
         partners[partnr].it,
         geolocs[geonr].it,
-        houses_it[housenr],
+        houses[housenr].it,
         jobs[jobnr].it,
         areanr
       );
@@ -573,7 +392,7 @@ function newFortune() {
         childnr,
         partners[partnr].en,
         geolocs[geonr].en,
-        houses_engl[housenr],
+        houses[housenr].en,
         jobs[jobnr].en,
         areanr
       );
