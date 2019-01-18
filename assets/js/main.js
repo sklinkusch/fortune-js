@@ -248,27 +248,27 @@ function randomvalue(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 // Arrays for possible solutions (english)
-let jobs_engl = [
-  "a doctor in",
-  "a drug dealer in",
-  "a murderer in",
-  "a pimp in",
-  "a prostitute in",
-  "the president of",
-  "the dictator of",
-  "the king of",
-  "the queen of",
-  "the emperor of",
-  "the empress of",
-  "the Dalai Lama in",
-  "a farmer in",
-  "the pope in",
-  "a CEO in",
-  "a clown in",
-  "a bank robber in",
-  "a diving instructor in",
-  "a skiing instructor in"
-];
+var jobs = [
+  { en: "a doctor in", de: "ein Arzt in", fr: "un médecin en", la: "medicus", it: "un dottore in" },
+  { en: "a drug dealer in", de: "ein Drogendealer in", fr: "un narcotrafiquant en", la: "mercator medicamentorum", it: "un narcotrafficante in" },
+  { en: "a murderer in", de: "ein Mörder in", fr: "un assassin en", la: "homicida", it: "un assassino in" },
+  { en: "a pimp in", de: "ein Zuhälter in", fr: "un souteneur en", la: "leno", it: "un ruffiano in" },
+  { en: "a prostitute in", de: "eine Prostituierte in", fr: "une prostituée en", la: "prostituta", it: "una prostituta in" },
+  { en: "the president of", de: "der Präsident von", fr: "le président de", la: "praeses", it: "il presidente di" },
+  { en: "the dictator of", de: "der Diktator von", fr: "le dictateur de", la: "dictator", it: "il dittatore di" },
+  { en: "the king of", de: "der König von", fr: "le roi de", la: "rex", it: "il re di" },
+  { en: "the queen of", de: "die Königin von", fr: "la reine de", la: "regina", it: "la regina di" },
+  { en: "the emperor of", de: "der Kaiser von", fr: "l'empereur de", la: "imperator", it: "l'imperatore di" },
+  { en: "the empress of", de: "die Kaiserin von", fr: "l'impératrice", la: "uxor imperatoria", it: "l'imperatrice di" },
+  { en: "the Dalai Lama in", de: "der Dalai Lama in", fr: "le Dalaï-lama en", la: "Dalai Lama", it: "il Dalai Lama in" },
+  { en: "a farmer in", de: "ein Bauer in", fr: "un paysan en", la: "agricola", it: "un contadino in" },
+  { en: "the pope in", de: "der Papst in", fr: "le pape en", la: "pontifex maximus", it: "il papa in" },
+  { en: "a CEO in", de: "ein Vorstandsvorsitzender in", fr: "un président du directoire en", la: "praeses directorati", it: "un amministratore delegato in" },
+  { en: "a clown in", de: "ein Clown in", fr: "un clown en", la: "morus", it: "un buffone in" },
+  { en: "a bank robber in", de: "ein Bankräuber in", fr: "un voleur de banque en", la: "raptor argentariae", it: "un rapinatore in banca in" },
+  { en: "a diving instructor in", de: "ein Tauchlehrer in", fr: "un instructeur de plongée en", la: "instructor demergendi", it: "un istruttore di immersioni in" },
+  { en: "a skiing instructor in", de: "ein Skilehrer in", fr: "un moniteur de ski en", la: "instructor nartis currendi", it: "un maestro di sci in" }
+]
 let geolocs_engl = [
   "North Korea",
   "Japan",
@@ -320,7 +320,6 @@ let partners_engl = [
 let houses_engl = [
   "in a house",
   "in a flat",
-  "in a penthouse",
   "in a public restroom",
   "in a palace",
   "in a whorehouse",
@@ -332,27 +331,6 @@ let houses_engl = [
   "in a swimming pool",
   "in a cave",
   "on the street"
-];
-let jobs_germ = [
-  "ein Arzt in",
-  "ein Drogendealer in",
-  "ein Mörder in",
-  "ein Zuhälter in",
-  "eine Prostituierte in",
-  "der Präsident von",
-  "der Diktator von",
-  "der König von",
-  "die Königin von",
-  "der Kaiser von",
-  "die Kaiserin von",
-  "der Dalai Lama in",
-  "ein Bauer in",
-  "der Papst in",
-  "ein Vorstandsvorsitzender in",
-  "ein Clown in",
-  "ein Bankräuber in",
-  "ein Tauchlehrer in",
-  "ein Skilehrer in"
 ];
 let geolocs_germ = [
   "Nordkorea",
@@ -405,7 +383,6 @@ let partners_germ = [
 let houses_germ = [
   "in einem Haus",
   "in einer Wohnung",
-  "in einem Penthouse",
   "in einer öffentlichen Toilette",
   "in einem Schloss",
   "in einem Bordell",
@@ -417,27 +394,6 @@ let houses_germ = [
   "in einem Schwimmbecken",
   "in einer Höhle",
   "auf der Straße"
-];
-let jobs_fr = [
-  "un médecin en",
-  "un narcotrafiquant en",
-  "un assassin en",
-  "un souteneur en",
-  "une prostituée en",
-  "le président de",
-  "le dictateur de",
-  "le roi de",
-  "la reine de",
-  "l'empereur de",
-  "l'impératrice de",
-  "le Dalaï-lama en",
-  "un paysan en",
-  "le pape en",
-  "un président du directoire en",
-  "un clown en",
-  "un voleur de banque en",
-  "un instructeur de plongée en",
-  "un moniteur de ski en"
 ];
 let geolocs_fr = [
   "la Corée du Nord",
@@ -490,7 +446,6 @@ let partners_fr = [
 let houses_fr = [
   "habiteras dans une maison",
   "habiteras dans un appartement",
-  "habiteras dans un penthouse",
   "habiteras dans des toilettes publiques",
   "habiteras dans un château",
   "habiteras dans une maison close",
@@ -502,27 +457,6 @@ let houses_fr = [
   "habiteras dans une piscine",
   "habiteras dans une grotte",
   "seras sans domicile fixe"
-];
-let jobs_la = [
-  "medicus",
-  "mercator medicamentorum",
-  "homicida",
-  "leno",
-  "prostituta",
-  "praeses",
-  "dictator",
-  "rex",
-  "regina",
-  "imperator",
-  "uxor imperatoria",
-  "Dalai Lama",
-  "agricola",
-  "pontifex maximus",
-  "praeses directorati",
-  "morus",
-  "raptor argentariae",
-  "instructor demergendus",
-  "instructor nartis currendus"
 ];
 let geolocs_la = [
   "in Corea Septentrionale",
@@ -586,27 +520,6 @@ let houses_la = [
   "habitabisque in caverna",
   "erisque domo carens"
 ];
-let jobs_it = [
-  "un dottore in",
-  "un narcotrafficante in",
-  "un assassino in",
-  "un ruffiano in",
-  "una prostituta in",
-  "il presidente di",
-  "il dittatore di",
-  "il re di",
-  "la regina di",
-  "l'imperatore di",
-  "l'imperatrice di",
-  "il Dalai Lama in",
-  "un contadino in",
-  "il papa in",
-  "un amministratore delegato in",
-  "un buffone in",
-  "un rapinatore in banca in",
-  "un istruttore di immersioni in",
-  "un maestro di sci in"
-];
 let geolocs_it = [
   "Corea del Nord",
   "nel Giappone",
@@ -658,7 +571,6 @@ let partners_it = [
 let houses_it = [
   "abiterai in una casa",
   "abiterai in un appartamento",
-  "abiterai in un attico",
   "abiterai in un gabinetto pubblico",
   "abiterai in un castello",
   "abiterai in un bordello",
@@ -673,7 +585,7 @@ let houses_it = [
 ];
 function newFortune() {
   let lang = getLanguage();
-  let jobnr;
+  let jobnr = randomize(jobs);
   let geonr;
   let partnr;
   let housenr;
@@ -682,7 +594,6 @@ function newFortune() {
     case "de":
     case "de-DE":
     case "de-AT":
-      jobnr = randomize(jobs_germ);
       geonr = randomize(geolocs_germ);
       partnr = randomize(partners_germ);
       housenr = randomize(houses_germ);
@@ -690,14 +601,12 @@ function newFortune() {
       break;
     case "fr":
     case "fr-FR":
-      jobnr = randomize(jobs_fr);
       geonr = randomize(geolocs_fr);
       partnr = randomize(partners_fr);
       housenr = randomize(houses_fr);
       house = houses_fr[housenr];
       break;
     case "la":
-      jobnr = randomize(jobs_la);
       geonr = randomize(geolocs_la);
       partnr = randomize(partners_la);
       housenr = randomize(houses_la);
@@ -705,14 +614,12 @@ function newFortune() {
       break;
     case "it":
     case "it-IT":
-      jobnr = randomize(jobs_it);
       geonr = randomize(geolocs_it);
       partnr = randomize(partners_it);
       housenr = randomize(houses_it);
       house = houses_it[housenr];
       break;
     default:
-      jobnr = randomize(jobs_engl);
       geonr = randomize(geolocs_engl);
       partnr = randomize(partners_engl);
       housenr = randomize(houses_engl);
@@ -729,92 +636,85 @@ function newFortune() {
     case houses_la[0]:
     case houses_it[0]:
       minimum = 50;
-      maximum = 201;
+      maximum = 1001;
       break;
-    case "in einer Wohnung":
-    case "in a flat":
-    case "habiteras dans un appartement":
-    case "habitabisque in domicilio":
-    case "abiterai in un appartamento":
+    case houses_germ[1]:
+    case houses_engl[1]:
+    case houses_fr[1]:
+    case houses_la[1]:
+    case houses_it[1]:
       minimum = 30;
       maximum = 101;
       break;
-    case "in einem Penthouse":
-    case "in a penthouse":
-    case "habiteras dans un penthouse":
-    case "abiterai in un attico":
-      minimum = 500;
-      maximum = 1001;
-      break;
-    case "in einer öffentlichen Toilette":
-    case "in a public restroom":
-    case "habiteras dans des toilettes publiques":
-    case "habitabisque in latrina publica":
-    case "abiterai in un gabinetto pubblico":
+    case houses_germ[2]:
+    case houses_engl[2]:
+    case houses_fr[2]:
+    case houses_la[2]:
+    case houses_it[2]:
       minimum = 10;
       maximum = 41;
       break;
-    case "in einem Schloss":
-    case "in a palace":
-    case "habiteras dans un château":
-    case "habitabisque in castello":
-    case "abiterai in un castello":
+    case houses_germ[3]:
+    case houses_engl[3]:
+    case houses_fr[3]:
+    case houses_la[3]:
+    case houses_it[3]:
       minimum = 500;
       maximum = 6001;
       break;
-    case "in einem Bordell":
-    case "in a whorehouse":
-    case "habiteras dans une maison close":
-    case "habitabisque in lupanare":
-    case "abiterai in un bordello":
+    case houses_germ[4]:
+    case houses_engl[4]:
+    case houses_fr[4]:
+    case houses_la[4]:
+    case houses_it[4]:
       minimum = 50;
       maximum = 3001;
       break;
-    case "in einer Gefängniszelle":
-    case "in a prison cell":
-    case "habiteras dans une cellule de prison":
-    case "habitabisque in carcere":
-    case "abiterai in una cella":
+    case houses_germ[5]:
+    case houses_engl[5]:
+    case houses_fr[5]:
+    case houses_la[5]:
+    case houses_it[5]:
       minimum = 8;
       maximum = 11;
       break;
-    case "in einem Zelt":
-    case "in a tent":
-    case "habiteras dans une tente":
-    case "habitabisque in tabernaculo":
-    case "abiterai in una tenda":
+    case houses_germ[6]:
+    case houses_engl[6]:
+    case houses_fr[6]:
+    case houses_la[6]:
+    case houses_it[6]:
       minimum = 4;
       maximum = 21;
       break;
-    case "in einem Wohnwagen":
-    case "in a trailer":
-    case "habiteras dans une caravane":
-    case "habitabisque in tracto peregetico":
-    case "abiterai in un roulotte":
+    case houses_germ[7]:
+    case houses_engl[7]:
+    case houses_fr[7]:
+    case houses_la[7]:
+    case houses_it[7]:
       minimum = 8;
       maximum = 21;
       break;
-    case "in einer Telefonzelle":
-    case "in a phone box":
-    case "habiteras dans une cabine téléphonique":
-    case "habitabisque in cabina telephoni":
-    case "abiterai in una cabina del telefono":
+    case houses_germ[8]:
+    case houses_engl[8]:
+    case houses_fr[8]:
+    case houses_la[8]:
+    case houses_it[8]:
       minimum = 1;
       maximum = 5;
       break;
-    case "in einem Stall":
-    case "in a stable":
-    case "habiteras dans une étable":
-    case "habitabisque in stabulo":
-    case "abiterai in una stalla":
+    case houses_germ[9]:
+    case houses_engl[9]:
+    case houses_fr[9]:
+    case houses_la[9]:
+    case houses_it[9]:
       minimum = 30;
       maximum = 5001;
       break;
-    case "auf der Straße":
-    case "on the street":
-    case "seras sans domicile fixe":
-    case "erisque domo carens":
-    case "serai senza tetto":
+    case houses_germ[10]:
+    case houses_engl[10]:
+    case houses_fr[10]:
+    case houses_la[10]:
+    case houses_it[10]:
       minimum = 0;
       maximum = 1;
       break;
@@ -833,7 +733,7 @@ function newFortune() {
         partners_germ[partnr],
         geolocs_germ[geonr],
         houses_germ[housenr],
-        jobs_germ[jobnr],
+        jobs[jobnr].de,
         areanr
       );
       break;
