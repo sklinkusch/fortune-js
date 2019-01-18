@@ -1,3 +1,29 @@
+// Function to determine the language
+function getLanguage() {
+  let LangSel = document.getElementById("language").value;
+  let lang;
+  switch (LangSel) {
+    case "from":
+      lang = navigator.language;
+      break;
+    case "de":
+      lang = "de";
+      break;
+    case "en":
+      lang = "en";
+      break;
+    case "fr":
+      lang = "fr";
+      break;
+    case "la":
+      lang = "la";
+      break;
+    case "it":
+      lang = "it";
+      break;
+  }
+  return lang;
+}
 // Function to create the English fortune sentence
 const fortune_engl = (
   numch = 0,
@@ -642,28 +668,7 @@ let houses_it = [
   "serai senza tetto"
 ];
 function newFortune() {
-  let LangSel = document.getElementById("language").value;
-  let lang;
-  switch (LangSel) {
-    case "from":
-      lang = navigator.language;
-      break;
-    case "de":
-      lang = "de";
-      break;
-    case "en":
-      lang = "en";
-      break;
-    case "fr":
-      lang = "fr";
-      break;
-    case "la":
-      lang = "la";
-      break;
-    case "it":
-      lang = "it";
-      break;
-  }
+  let lang = getLanguage();
   let jobnr;
   let geonr;
   let partnr;
@@ -872,28 +877,7 @@ function newFortune() {
   }
 }
 function writeText() {
-  let LangSel = document.getElementById("language").value;
-  let lang;
-  switch (LangSel) {
-    case "from":
-      lang = navigator.language;
-      break;
-    case "de":
-      lang = "de";
-      break;
-    case "en":
-      lang = "en";
-      break;
-    case "fr":
-      lang = "fr";
-      break;
-    case "la":
-      lang = "la";
-      break;
-    case "it":
-      lang = "it";
-      break;
-  }
+  let lang = getLanguage();
   switch (lang) {
     case "de":
       document.getElementById("title").innerHTML = "🔮Erfahre deine Zukunft🔮";
