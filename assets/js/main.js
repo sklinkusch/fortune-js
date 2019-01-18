@@ -160,14 +160,7 @@ function fortune_la(numch, partn, loc, house, job, area) {
   return `Eris ${job} ${loc}, ${marie} cum ${partn}, tibi ${child} ${house} ${sqm}.`;
 };
 // Italian function
-function fortune_it(
-  numch = 0,
-  partn = "Dante Alighieri",
-  loc = "in Italia",
-  house = "casa",
-  job = "dottore",
-  area = 1
-) {
+function fortune_it(numch, partn, loc, house, job, area) {
   let marie =
     /regina/.test(job) || /imperatrice/.test(job) || /prostituta/.test(job)
       ? "sposata"
