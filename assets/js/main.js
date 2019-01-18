@@ -50,14 +50,7 @@ function fortune_engl(numch, partn, loc, house, job, area) {
   return `You will be ${job} ${loc}, married to ${partn} with ${child} living ${house}${sqm}.`;
 };
 // Function to create the German fortune sentence
-function fortune_germ(
-  numch = 0,
-  partn = "Monika Mustermann",
-  loc = "Kosmos",
-  house = "ein Haus",
-  job = "ein Arbeiter in",
-  area = 1
-) {
+function fortune_germ(numch, partn, loc, house, job, area) {
   let child =
     numch === 0 ? "keine Kinder" : numch === 1 ? "ein Kind" : `${numch} Kinder`;
   let sqm =
