@@ -92,14 +92,7 @@ function fortune_germ(numch, partn, loc, house, job, area) {
   return `Du wirst ${job_ft} ${loc_ft} sein, mit ${partn} verheiratet sein, ${child} haben und ${house}${sqm} leben.`;
 };
 // Function to create the French fortune sentence
-function fortune_fr(
-  numch = 0,
-  partn = "Mme Toulemonde",
-  loc = "en Aérospace",
-  house = "une maison",
-  job = "un ouvrier",
-  area = 1
-) {
+function fortune_fr(numch, partn, loc, house, job, area) {
   let marie =
     /reine/.test(job) || /impératrice/.test(job) || /prostituée/.test(job)
       ? "mariée"
