@@ -25,14 +25,14 @@ function getLanguage() {
   return lang;
 }
 // Function to create the English fortune sentence
-const fortune_engl = (
+function fortune_engl(
   numch = 0,
   partn = "Jane Doe",
   loc = "space",
   house = "a house",
   job = "a worker in",
   area = 1
-) => {
+) {
   let child =
     numch === 0 ? "no kids" : numch === 1 ? `${numch} kid` : `${numch} kids`;
   let sqm =
@@ -44,14 +44,14 @@ const fortune_engl = (
   return `You will be ${job} ${loc}, married to ${partn} with ${child} living ${house}${sqm}.`;
 };
 // Function to create the German fortune sentence
-const fortune_germ = (
+function fortune_germ(
   numch = 0,
   partn = "Monika Mustermann",
   loc = "Kosmos",
   house = "ein Haus",
   job = "ein Arbeiter in",
   area = 1
-) => {
+) {
   let child =
     numch === 0 ? "keine Kinder" : numch === 1 ? "ein Kind" : `${numch} Kinder`;
   let sqm =
@@ -71,16 +71,16 @@ const fortune_germ = (
   ) {
     job_ft = job.substr(0, job.length - 4);
     loc_ft = loc.replace("den", "der");
-  } else if (/von/.test(job) && loc === "Vatikan") {
+  } else if (job.endsWith('von') && loc === "Vatikan") {
     job_ft = job.replace("von", "des");
     loc_ft = loc.padEnd(8, "s");
-  } else if (/von/.test(job) && loc === "dem Vereinigten Königreich") {
+  } else if (job.endsWith('von') && loc === "dem Vereinigten Königreich") {
     job_ft = job.replace("von", "des");
     loc_ft = "Vereinigten Königreichs";
-  } else if (/ in/.test(job) && loc === "Vatikan") {
+  } else if (job.endsWith('in') && loc === "Vatikan") {
     job_ft = job.replace(" in", " im");
     loc_ft = loc;
-  } else if (/ in/.test(job) && loc === "dem Vereinigten Königreich") {
+  } else if (job.endsWith('in') && loc === "dem Vereinigten Königreich") {
     job_ft = job.replace(" in", " im");
     loc_ft = loc.slice(4);
   } else if (job.endsWith('in') && loc === "den Malediven") {
@@ -93,14 +93,14 @@ const fortune_germ = (
   return `Du wirst ${job_ft} ${loc_ft} sein, mit ${partn} verheiratet sein, ${child} haben und ${house}${sqm} leben.`;
 };
 // Function to create the French fortune sentence
-const fortune_fr = (
+function fortune_fr(
   numch = 0,
   partn = "Mme Toulemonde",
   loc = "en Aérospace",
   house = "une maison",
   job = "un ouvrier",
   area = 1
-) => {
+) {
   let marie =
     /reine/.test(job) || /impératrice/.test(job) || /prostituée/.test(job)
       ? "mariée"
@@ -119,41 +119,41 @@ const fortune_fr = (
         : "";
   let job_ft;
   let loc_ft;
-  if (/ en$/.test(job) && /^la /.test(loc)) {
+  if (job.endsWith('en') && loc.startsWith('la')) {
     job_ft = job;
     loc_ft = loc.substring(3);
-  } else if (/ en$/.test(job) && /^l'/.test(loc)) {
-    job_ft = job;
-    loc_ft = loc.substring(2);
-  } else if (/ en$/.test(job) && /^les /.test(loc)) {
+  } else if (job.endsWith('en') && loc.startsWith('les')) {
     job_ft = job.replace(" en", " aux");
     loc_ft = loc.substring(4);
-  } else if (/ en$/.test(job) && /^le /.test(loc)) {
+  } else if (job.endsWith('en') && loc.startsWith('le')) {
     job_ft = job.replace(" en", " au");
     loc_ft = loc.substring(3);
-  } else if (/ de$/.test(job) && /^la /.test(loc)) {
+  } else if (job.endsWith('en') && loc.startsWith("l'")) {
+    job_ft = job;
+    loc_ft = loc.substring(2);
+  } else if (job.endsWith('de') && loc.startsWith('la')) {
     job_ft = job;
     loc_ft = loc.substring(3);
-  } else if (/ de$/.test(job) && /l'/.test(loc)) {
-    job_ft = job.replace(" de", " d'");
-    loc_ft = loc.substring(2);
-  } else if (/ de$/.test(job) && /^le /.test(loc)) {
-    job_ft = job.replace(" de", " du");
-    loc_ft = loc.substring(3);
-  } else if (/ de$/.test(job) && /^les /.test(loc)) {
+  } else if (job.endsWith('de') && loc.startsWith('les')) {
     job_ft = job.replace(" de", " des");
     loc_ft = loc.substring(4);
+  } else if (job.endsWith('de') && loc.startsWith('le')) {
+    job_ft = job.replace(" de", " du");
+    loc_ft = loc.substring(3);
+  } else if (job.endsWith('de') && loc.startsWith("l'")) {
+    job_ft = job.replace(" de", " d'");
+    loc_ft = loc.substring(2);
   }
   return `Tu seras ${job_ft} ${loc_ft}, tu seras ${marie} avec ${partn}, tu ${child} et tu ${house}${sqm}.`;
 };
-const fortune_la = (
+function fortune_la(
   numch = 0,
   partn = "Caio Iulio Caesare",
   loc = "in terra",
   house = "mansione",
   job = "faber",
   area = 1
-) => {
+) {
   let marie;
   if (/regina/.test(job) || /imperatoria/.test(job) || /prostituta/.test(job)) {
     marie = "nupta";
@@ -175,14 +175,14 @@ const fortune_la = (
   return `Eris ${job} ${loc}, ${marie} cum ${partn}, tibi ${child} ${house} ${sqm}.`;
 };
 // Italian function
-const fortune_it = (
+function fortune_it(
   numch = 0,
   partn = "Dante Alighieri",
   loc = "in Italia",
   house = "casa",
   job = "dottore",
   area = 1
-) => {
+) {
   let marie =
     /regina/.test(job) || /imperatrice/.test(job) || /prostituta/.test(job)
       ? "sposata"
@@ -201,31 +201,31 @@ const fortune_it = (
         : "";
   let job_ft;
   let loc_ft;
-  if (job.endsWith("in") && /^nelle/.test(loc)) {
+  if (job.endsWith("in") && loc.startsWith('nelle')) {
     job_ft = job.slice(0, -3);
     loc_ft = loc;
-  } else if (job.endsWith("in") && /^nello/.test(loc)) {
+  } else if (job.endsWith("in") && loc.startsWith('nello')) {
     job_ft = job.slice(0, -3);
     loc_ft = loc;
-  } else if (job.endsWith("in") && /^nel/.test(loc)) {
+  } else if (job.endsWith("in") && loc.startsWith('nel')) {
     job_ft = job.slice(0, -3);
     loc_ft = loc;
-  } else if (job.endsWith("in") && /^nei/.test(loc)) {
+  } else if (job.endsWith("in") && loc.startsWith('nei')) {
     job_ft = job.slice(0, -3);
     loc_ft = loc;
-  } else if (job.endsWith("in") && /^negli/.test(loc)) {
+  } else if (job.endsWith("in") && loc.startsWith('negli')) {
     job_ft = job.slice(0, -3);
     loc_ft = loc;
-  } else if (job.endsWith("di") && /^nelle/.test(loc)) {
+  } else if (job.endsWith("di") && loc.startsWith('nelle')) {
     job_ft = job.slice(0, -3);
     loc_ft = loc.replace("nelle ", "delle ");
-  } else if (job.endsWith("di") && /^nello/.test(loc)) {
+  } else if (job.endsWith("di") && loc.startsWith('nello')) {
     job_ft = job.slice(0, -3);
     loc_ft = loc.replace("nello ", "dello ");
-  } else if (job.endsWith("di") && /^nel/.test(loc)) {
+  } else if (job.endsWith("di") && loc.startsWith('nel')) {
     job_ft = job.slice(0, -3);
     loc_ft = loc.replace("nel ", "del ");
-  } else if (job.endsWith("di") && /^negli/.test(loc)) {
+  } else if (job.endsWith("di") && loc.startsWith('negli')) {
     job_ft = job.slice(0, -3);
     loc_ft = loc.replace("negli ", "degli ");
   } else if (job.endsWith("di") && /^[AEIOU]/.test(loc)) {
@@ -241,8 +241,12 @@ const fortune_it = (
   return `Tu sarai ${job_ft} ${loc_ft}, ${marie} con ${partn}, tu avrai ${child} e ${house} ${sqm}.`;
 };
 // Functions to create random values
-const randomize = MyArray => Math.floor(Math.random() * MyArray.length);
-const randomvalue = (min, max) => Math.floor(Math.random() * (max - min) + min);
+function randomize(MyArray) {
+  return Math.floor(Math.random() * MyArray.length);
+}
+function randomvalue(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
 // Arrays for possible solutions (english)
 let jobs_engl = [
   "a doctor in",
