@@ -138,14 +138,7 @@ function fortune_fr(numch, partn, loc, house, job, area) {
   }
   return `Tu seras ${job_ft} ${loc_ft}, tu seras ${marie} avec ${partn}, tu ${child} et tu ${house}${sqm}.`;
 };
-function fortune_la(
-  numch = 0,
-  partn = "Caio Iulio Caesare",
-  loc = "in terra",
-  house = "mansione",
-  job = "faber",
-  area = 1
-) {
+function fortune_la(numch, partn, loc, house, job, area) {
   let marie;
   if (/regina/.test(job) || /imperatoria/.test(job) || /prostituta/.test(job)) {
     marie = "nupta";
