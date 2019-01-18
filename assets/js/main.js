@@ -50,7 +50,7 @@ function fortune_en(numch, partn, loc, house, job, area) {
   return `You will be ${job} ${loc}, married to ${partn} with ${child} living ${house}${sqm}.`;
 };
 // Function to create the German fortune sentence
-function fortune_germ(numch, partn, loc, house, job, area) {
+function fortune_de(numch, partn, loc, house, job, area) {
   let child =
     numch === 0 ? "keine Kinder" : numch === 1 ? "ein Kind" : `${numch} Kinder`;
   let sqm =
@@ -322,7 +322,7 @@ function newFortune() {
   //Function call and output to the HTML
   switch (lang) {
     case "de":
-      document.getElementById("fortune").innerHTML = fortune_germ(
+      document.getElementById("fortune").innerHTML = fortune_de(
         childnr,
         partners[partnr].de,
         geolocs[geonr].de,
