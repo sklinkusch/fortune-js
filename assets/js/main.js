@@ -269,32 +269,32 @@ var jobs = [
   { en: "a diving instructor in", de: "ein Tauchlehrer in", fr: "un instructeur de plongée en", la: "instructor demergendi", it: "un istruttore di immersioni in" },
   { en: "a skiing instructor in", de: "ein Skilehrer in", fr: "un moniteur de ski en", la: "instructor nartis currendi", it: "un maestro di sci in" }
 ]
-let geolocs_engl = [
-  "North Korea",
-  "Japan",
-  "the United States",
-  "Germany",
-  "Italy",
-  "Finland",
-  "South Africa",
-  "Argentina",
-  "Mexico",
-  "Vatican City",
-  "Australia",
-  "Thailand",
-  "China",
-  "Saudi-Arabia",
-  "France",
-  "Turkey",
-  "Russia",
-  "Switzerland",
-  "Nepal",
-  "Maldives",
-  "the United Kingdom",
-  "Hungary",
-  "Poland",
-  "Austria"
-];
+var geolocs = [
+  { en: "North Korea", de: "Nordkorea", fr: "la Corée du Nord", la: "in Corea Septentrionale", it: "Corea del Nord" },
+  { en: "Japan", de: "Japan", fr: "le Japon", la: "in Iaponia", it: "nel Giappone" },
+  { en: "the United States", de: "den Vereinigten Staaten", fr: "les États-Unis", la: "in Civitatibus Foederatis Americae", it: "negli Stati Uniti" },
+  { en: "Germany", de: "Deutschland", fr: "l'Allemagne", la: "in Germania", it: "Germania" },
+  { en: "Italy", de: "Italien", fr: "l'Italie", la: "in Italia", it: "Italia" },
+  { en: "Finland", de: "Finnland", fr: "la Finlande", la: "in Finnia", it: "Finlandia" },
+  { en: "South Africa", de: "Südafrika", fr: "l'Afrique du Sud", la: "in Africa Australe", it: "nel Sudafrica" },
+  { en: "Argentina", de: "Argentinien", fr: "l'Argentine", la: "in Argentina", it: "Argentina" },
+  { en: "Mexico", de: "Mexiko", fr: "le Mexique", la: "in Mexico", it: "nel Messico" },
+  { en: "Vatican City", de: "Vatikan", fr: "le Vatican", la: "in Civitate Vaticana", it: "nel Vaticano" },
+  { en: "Australia", de: "Australien", fr: "l'Australie", la: "in Australia", it: "Australia" },
+  { en: "Thailand", de: "Thailand", fr: "la Thaïlande", la: "in Thailandia", it: "Thailandia" },
+  { en: "China", de: "China", fr: "la Chine", la: "in Sinis", it: "Cina" },
+  { en: "Saudi Arabia", de: "Saudi-Arabien", fr: "l'Arabie Saoudite", la: "in Arabia Saudita", it: "Arabia Saudita" },
+  { en: "France", de: "Frankreich", fr: "la France", la: "in Gallia", it: "Francia" },
+  { en: "Turkey", de: "der Türkei", fr: "la Turquie", la: "in Turcia", it: "Turchia" },
+  { en: "Russia", de: "Russland", fr: "la Russie", la: "in Russia", it: "Russia" },
+  { en: "Switzerland", de: "der Schweiz", fr: "la Suisse", la: "in Helvetia", it: "Svizzera" },
+  { en: "Nepal", de: "Nepal", fr: "le Népal", la: "in Nepalia", it: "nel Nepal" },
+  { en: "Maldives", de: "den Malediven", fr: "les Maldives", la: "in Insulis Maldivis", it: "nelle Maldive" },
+  { en: "the United Kingdom", de: "dem Vereinigten Königreich", fr: "le Royaume-Uni", la: "in Britanniarum Regnum", it: "nel Regno Unito" },
+  { en: "Hungary", de: "Ungarn", fr: "l'Hongrie", la: "in Hungaria", it: "Ungheria" },
+  { en: "Poland", de: "Polen", fr: "la Pologne", la: "in Polonia", it: "Polonia" },
+  { en: "Austria", de: "Österreich", fr: "l'Autriche", la: "in Austria", it: "Austria" }
+]
 let partners_engl = [
   "a man",
   "a woman",
@@ -331,32 +331,6 @@ let houses_engl = [
   "in a swimming pool",
   "in a cave",
   "on the street"
-];
-let geolocs_germ = [
-  "Nordkorea",
-  "Japan",
-  "den Vereinigten Staaten von Amerika",
-  "Deutschland",
-  "Italien",
-  "Finnland",
-  "Südafrika",
-  "Argentinien",
-  "Mexiko",
-  "Vatikan",
-  "Australien",
-  "Thailand",
-  "China",
-  "Saudi-Arabien",
-  "Frankreich",
-  "der Türkei",
-  "Russland",
-  "der Schweiz",
-  "Nepal",
-  "den Malediven",
-  "dem Vereinigten Königreich",
-  "Ungarn",
-  "Polen",
-  "Österreich"
 ];
 let partners_germ = [
   "einem Mann",
@@ -395,32 +369,6 @@ let houses_germ = [
   "in einer Höhle",
   "auf der Straße"
 ];
-let geolocs_fr = [
-  "la Corée du Nord",
-  "le Japon",
-  "les États-Unis",
-  "l'Allemagne",
-  "l'Italie",
-  "la Finlande",
-  "l'Afrique du Sud",
-  "l'Argentine",
-  "le Mexique",
-  "le Vatican",
-  "l'Australie",
-  "la Thaïlande",
-  "la Chine",
-  "l'Arabie saoudite",
-  "la France",
-  "la Turquie",
-  "la Russie",
-  "la Suisse",
-  "le Népal",
-  "les Maldives",
-  "le Royaume-Uni",
-  "l'Hongrie",
-  "la Pologne",
-  "l'Autriche"
-];
 let partners_fr = [
   "un homme",
   "une femme",
@@ -458,32 +406,6 @@ let houses_fr = [
   "habiteras dans une grotte",
   "seras sans domicile fixe"
 ];
-let geolocs_la = [
-  "in Corea Septentrionale",
-  "in Iaponia",
-  "in Civitatibus Foederatis Americae",
-  "in Germania",
-  "in Italia",
-  "in Finnia",
-  "in Africa Australe",
-  "in Argentina",
-  "in Mexico",
-  "in Civitate Vaticana",
-  "in Australia",
-  "in Thailandia",
-  "in Sinis",
-  "in Arabia Saudita",
-  "in Gallia",
-  "in Turcia",
-  "in Russia",
-  "in Helvetia",
-  "in Nepalia",
-  "in Insulae Maldivae",
-  "in Britanniarum Regnum",
-  "in Hungaria",
-  "in Polonia",
-  "in Austria"
-];
 let partners_la = [
   "viro",
   "muliere",
@@ -519,32 +441,6 @@ let houses_la = [
   "habitabisque in thermae",
   "habitabisque in caverna",
   "erisque domo carens"
-];
-let geolocs_it = [
-  "Corea del Nord",
-  "nel Giappone",
-  "negli Stati Uniti",
-  "Germania",
-  "Italia",
-  "Finlandia",
-  "nel Sudafrica",
-  "Argentina",
-  "nel Messico",
-  "nel Vaticano",
-  "Australia",
-  "Thailandia",
-  "Cina",
-  "Arabia Saudita",
-  "Francia",
-  "Turchia",
-  "Russia",
-  "Svizzera",
-  "nel Nepal",
-  "nelle Maldive",
-  "nel Regno Unito",
-  "Ungheria",
-  "Polonia",
-  "Austria"
 ];
 let partners_it = [
   "un uomo",
@@ -586,7 +482,7 @@ let houses_it = [
 function newFortune() {
   let lang = getLanguage();
   let jobnr = randomize(jobs);
-  let geonr;
+  let geonr = randomize(geolocs);
   let partnr;
   let housenr;
   let house;
@@ -594,33 +490,28 @@ function newFortune() {
     case "de":
     case "de-DE":
     case "de-AT":
-      geonr = randomize(geolocs_germ);
       partnr = randomize(partners_germ);
       housenr = randomize(houses_germ);
       house = houses_germ[housenr];
       break;
     case "fr":
     case "fr-FR":
-      geonr = randomize(geolocs_fr);
       partnr = randomize(partners_fr);
       housenr = randomize(houses_fr);
       house = houses_fr[housenr];
       break;
     case "la":
-      geonr = randomize(geolocs_la);
       partnr = randomize(partners_la);
       housenr = randomize(houses_la);
       house = houses_la[housenr];
       break;
     case "it":
     case "it-IT":
-      geonr = randomize(geolocs_it);
       partnr = randomize(partners_it);
       housenr = randomize(houses_it);
       house = houses_it[housenr];
       break;
     default:
-      geonr = randomize(geolocs_engl);
       partnr = randomize(partners_engl);
       housenr = randomize(houses_engl);
       house = houses_engl[housenr];
@@ -731,7 +622,7 @@ function newFortune() {
       document.getElementById("fortune").innerHTML = fortune_germ(
         childnr,
         partners_germ[partnr],
-        geolocs_germ[geonr],
+        geolocs[geonr].de,
         houses_germ[housenr],
         jobs[jobnr].de,
         areanr
@@ -742,7 +633,7 @@ function newFortune() {
       document.getElementById("fortune").innerHTML = fortune_fr(
         childnr,
         partners_fr[partnr],
-        geolocs_fr[geonr],
+        geolocs[geonr].de,
         houses_fr[housenr],
         jobs_fr[jobnr],
         areanr
@@ -752,7 +643,7 @@ function newFortune() {
       document.getElementById("fortune").innerHTML = fortune_la(
         childnr,
         partners_la[partnr],
-        geolocs_la[geonr],
+        geolocs[geonr].la,
         houses_la[housenr],
         jobs_la[jobnr],
         areanr
@@ -763,7 +654,7 @@ function newFortune() {
       document.getElementById("fortune").innerHTML = fortune_it(
         childnr,
         partners_it[partnr],
-        geolocs_it[geonr],
+        geolocs[geonr].it,
         houses_it[housenr],
         jobs_it[jobnr],
         areanr
@@ -773,7 +664,7 @@ function newFortune() {
       document.getElementById("fortune").innerHTML = fortune_engl(
         childnr,
         partners_engl[partnr],
-        geolocs_engl[geonr],
+        geolocs[geonr].en,
         houses_engl[housenr],
         jobs_engl[jobnr],
         areanr
