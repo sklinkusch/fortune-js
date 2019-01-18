@@ -52,8 +52,8 @@ function fortune_engl(
     area === 1
       ? ` of ${area} square meter`
       : area > 1
-      ? ` of ${area} square meters`
-      : "";
+        ? ` of ${area} square meters`
+        : "";
   return `You will be ${job} ${loc}, married to ${partn} with ${child} living ${house}${sqm}.`;
 };
 // Function to create the German fortune sentence
@@ -71,8 +71,8 @@ function fortune_germ(
     area === 1
       ? " mit einem Quadratmeter Wohnfläche"
       : area > 1
-      ? ` mit ${area} Quadratmetern Wohnfläche`
-      : "";
+        ? ` mit ${area} Quadratmetern Wohnfläche`
+        : "";
   let job_ft;
   let loc_ft;
   if (
@@ -122,14 +122,14 @@ function fortune_fr(
     numch === 0
       ? `n'auras pas d'enfants`
       : numch === 1
-      ? `auras un enfant`
-      : `auras ${numch} enfants`;
+        ? `auras un enfant`
+        : `auras ${numch} enfants`;
   let sqm =
     area === 1
       ? ` d'un mètre carré`
       : area > 1
-      ? ` de ${area} mètres carré`
-      : "";
+        ? ` de ${area} mètres carré`
+        : "";
   let job_ft;
   let loc_ft;
   if (job.endsWith('en') && loc.startsWith('la')) {
@@ -177,14 +177,14 @@ function fortune_la(
     numch === 0
       ? "non erunt filii"
       : numch === 1
-      ? "erit filius"
-      : `erunt ${numch} filii`;
+        ? "erit filius"
+        : `erunt ${numch} filii`;
   let sqm =
     area == 1
       ? "unius metri quadrati"
       : area > 1
-      ? `${area} metrorum quadratorum`
-      : "";
+        ? `${area} metrorum quadratorum`
+        : "";
   return `Eris ${job} ${loc}, ${marie} cum ${partn}, tibi ${child} ${house} ${sqm}.`;
 };
 // Italian function
@@ -204,14 +204,14 @@ function fortune_it(
     numch === 0
       ? "alcuno bambino"
       : numch === 1
-      ? "un bambino"
-      : `${numch} bambini`;
+        ? "un bambino"
+        : `${numch} bambini`;
   let sqm =
     area === 1
       ? "di un metro quadrato"
       : area > 1
-      ? `di ${area} metri quadrati`
-      : "";
+        ? `di ${area} metri quadrati`
+        : "";
   let job_ft;
   let loc_ft;
   if (job.endsWith("in") && loc.startsWith('nelle')) {
@@ -254,7 +254,6 @@ function fortune_it(
   return `Tu sarai ${job_ft} ${loc_ft}, ${marie} con ${partn}, tu avrai ${child} e ${house} ${sqm}.`;
 };
 // Functions to create random values
-<<<<<<< HEAD
 function randomize(MyArray) {
   return Math.floor(Math.random() * MyArray.length);
 }
@@ -347,435 +346,6 @@ var houses = [
   { en: "in a cave", de: "in einer Höhle", fr: "habiteras dans une grotte", la: "habitabisque in caverna", it: "abiterai in una grotta", min: 100, max: 275000 },
   { en: "on the street", de: "auf der Straße", fr: "seras sans domicile fixe", la: "erisque domo carens", it: "serai senza tetto", min: 0, max: 1 }
 ]
-=======
-const randomize = MyArray => Math.floor(Math.random() * MyArray.length);
-const randomvalue = (min, max) => Math.floor(Math.random() * (max - min) + min);
-// Arrays for possible solutions (english)
-let jobs_engl = [
-  "a doctor in",
-  "a drug dealer in",
-  "a murderer in",
-  "a pimp in",
-  "a prostitute in",
-  "the president of",
-  "the dictator of",
-  "the king of",
-  "the queen of",
-  "the emperor of",
-  "the empress of",
-  "the Dalai Lama in",
-  "a farmer in",
-  "the pope in",
-  "a CEO in",
-  "a clown in",
-  "a bank robber in",
-  "a diving instructor in",
-  "a skiing instructor in"
-];
-let geolocs_engl = [
-  "North Korea",
-  "Japan",
-  "the United States",
-  "Germany",
-  "Italy",
-  "Finland",
-  "South Africa",
-  "Argentina",
-  "Mexico",
-  "Vatican City",
-  "Australia",
-  "Thailand",
-  "China",
-  "Saudi-Arabia",
-  "France",
-  "Turkey",
-  "Russia",
-  "Switzerland",
-  "Nepal",
-  "Maldives",
-  "the United Kingdom",
-  "Hungary",
-  "Poland",
-  "Austria"
-];
-let partners_engl = [
-  "a man",
-  "a woman",
-  "several men at the same time",
-  "several women at the same time",
-  "several women and men at the same time",
-  "no one",
-  "your dog",
-  "your cat",
-  "your hamster",
-  "your guinea-pig",
-  "your pig",
-  "your cow",
-  "your bull",
-  "your bear",
-  "your turtle",
-  "your bunny",
-  "your horse",
-  "your sheep",
-  "your goat",
-  "your job"
-];
-let houses_engl = [
-  "in a house",
-  "in a flat",
-  "in a penthouse",
-  "in a public restroom",
-  "in a palace",
-  "in a whorehouse",
-  "in a prison cell",
-  "in a tent",
-  "in a trailer",
-  "in a phone box",
-  "in a stable",
-  "in a swimming pool",
-  "in a cave",
-  "on the street"
-];
-let jobs_germ = [
-  "ein Arzt in",
-  "ein Drogendealer in",
-  "ein Mörder in",
-  "ein Zuhälter in",
-  "eine Prostituierte in",
-  "der Präsident von",
-  "der Diktator von",
-  "der König von",
-  "die Königin von",
-  "der Kaiser von",
-  "die Kaiserin von",
-  "der Dalai Lama in",
-  "ein Bauer in",
-  "der Papst in",
-  "ein Vorstandsvorsitzender in",
-  "ein Clown in",
-  "ein Bankräuber in",
-  "ein Tauchlehrer in",
-  "ein Skilehrer in"
-];
-let geolocs_germ = [
-  "Nordkorea",
-  "Japan",
-  "den Vereinigten Staaten von Amerika",
-  "Deutschland",
-  "Italien",
-  "Finnland",
-  "Südafrika",
-  "Argentinien",
-  "Mexiko",
-  "Vatikan",
-  "Australien",
-  "Thailand",
-  "China",
-  "Saudi-Arabien",
-  "Frankreich",
-  "der Türkei",
-  "Russland",
-  "der Schweiz",
-  "Nepal",
-  "den Malediven",
-  "dem Vereinigten Königreich",
-  "Ungarn",
-  "Polen",
-  "Österreich"
-];
-let partners_germ = [
-  "einem Mann",
-  "einer Frau",
-  "mehreren Männern gleichzeitig",
-  "mehreren Frauen gleichzeitig",
-  "mehreren Frauen und Männern gleichzeitig",
-  "niemandem",
-  "deinem Hund",
-  "deiner Katze",
-  "deinem Hamster",
-  "deinem Meerschweinchen",
-  "deinem Schwein",
-  "deiner Kuh",
-  "deinem Stier",
-  "deinem Bären",
-  "deiner Schildkröte",
-  "deinem Hasen",
-  "deinem Pferd",
-  "deinem Schaf",
-  "deiner Ziege",
-  "deinem Beruf"
-];
-let houses_germ = [
-  "in einem Haus",
-  "in einer Wohnung",
-  "in einem Penthouse",
-  "in einer öffentlichen Toilette",
-  "in einem Schloss",
-  "in einem Bordell",
-  "in einer Gefängniszelle",
-  "in einem Zelt",
-  "in einem Wohnwagen",
-  "in einer Telefonzelle",
-  "in einem Stall",
-  "in einem Schwimmbecken",
-  "in einer Höhle",
-  "auf der Straße"
-];
-let jobs_fr = [
-  "un médecin en",
-  "un narcotrafiquant en",
-  "un assassin en",
-  "un souteneur en",
-  "une prostituée en",
-  "le président de",
-  "le dictateur de",
-  "le roi de",
-  "la reine de",
-  "l'empereur de",
-  "l'impératrice de",
-  "le Dalaï-lama en",
-  "un paysan en",
-  "le pape en",
-  "un président du directoire en",
-  "un clown en",
-  "un voleur de banque en",
-  "un instructeur de plongée en",
-  "un moniteur de ski en"
-];
-let geolocs_fr = [
-  "la Corée du Nord",
-  "le Japon",
-  "les États-Unis",
-  "l'Allemagne",
-  "l'Italie",
-  "la Finlande",
-  "l'Afrique du Sud",
-  "l'Argentine",
-  "le Mexique",
-  "le Vatican",
-  "l'Australie",
-  "la Thaïlande",
-  "la Chine",
-  "l'Arabie saoudite",
-  "la France",
-  "la Turquie",
-  "la Russie",
-  "la Suisse",
-  "le Népal",
-  "les Maldives",
-  "le Royaume-Uni",
-  "l'Hongrie",
-  "la Pologne",
-  "l'Autriche"
-];
-let partners_fr = [
-  "un homme",
-  "une femme",
-  "plusieurs hommes en même temps",
-  "plusieurs femmes en même temps",
-  "plusieurs femmes et plusieurs hommes en même temps",
-  "personne",
-  "ton chien",
-  "ton chat",
-  "ton hamster",
-  "ton cochon d'Inde",
-  "ton cochon",
-  "ta vache",
-  "ton taureau",
-  "ton ours",
-  "ta tortue",
-  "ton lièvre",
-  "ton cheval",
-  "ton mouton",
-  "ta chèvre",
-  "ta profession"
-];
-let houses_fr = [
-  "habiteras dans une maison",
-  "habiteras dans un appartement",
-  "habiteras dans un penthouse",
-  "habiteras dans des toilettes publiques",
-  "habiteras dans un château",
-  "habiteras dans une maison close",
-  "habiteras dans une cellule de prison",
-  "habiteras dans une tente",
-  "habiteras dans une caravane",
-  "habiteras dans une cabine téléphonique",
-  "habiteras dans une étable",
-  "habiteras dans une piscine",
-  "habiteras dans une grotte",
-  "seras sans domicile fixe"
-];
-let jobs_la = [
-  "medicus",
-  "mercator medicamentorum",
-  "homicida",
-  "leno",
-  "prostituta",
-  "praeses",
-  "dictator",
-  "rex",
-  "regina",
-  "imperator",
-  "uxor imperatoria",
-  "Dalai Lama",
-  "agricola",
-  "pontifex maximus",
-  "praeses directorati",
-  "morus",
-  "raptor argentariae",
-  "instructor demergendus",
-  "instructor nartis currendus"
-];
-let geolocs_la = [
-  "in Corea Septentrionale",
-  "in Iaponia",
-  "in Civitatibus Foederatis Americae",
-  "in Germania",
-  "in Italia",
-  "in Finnia",
-  "in Africa Australe",
-  "in Argentina",
-  "in Mexico",
-  "in Civitate Vaticana",
-  "in Australia",
-  "in Thailandia",
-  "in Sinis",
-  "in Arabia Saudita",
-  "in Gallia",
-  "in Turcia",
-  "in Russia",
-  "in Helvetia",
-  "in Nepalia",
-  "in Insulae Maldivae",
-  "in Britanniarum Regnum",
-  "in Hungaria",
-  "in Polonia",
-  "in Austria"
-];
-let partners_la = [
-  "viro",
-  "muliere",
-  "simul compluribus viris",
-  "simul compluribus mulieribus",
-  "simul compluribus mulieribus virisque",
-  "nullo",
-  "cane tuo",
-  "fele tua",
-  "criceto tuo",
-  "cavia porcellus tua",
-  "porco tuo",
-  "bove tuo",
-  "vacca tua",
-  "urso tuo",
-  "testudine tua",
-  "lepo tuo",
-  "equo tuo",
-  "ove tua",
-  "capra tua",
-  "professione tua"
-];
-let houses_la = [
-  "habitabisque in mansione",
-  "habitabisque in domicilio",
-  "habitabisque in latrina publica",
-  "habitabisque in castello",
-  "habitabisque in lupanare",
-  "habitabisque in carcere",
-  "habitabisque in tabernaculo",
-  "habitabisque in tracto periegetico",
-  "habitabisque in cabina telephoni",
-  "habitabisque in stabulo",
-  "habitabisque in thermae",
-  "habitabisque in caverna",
-  "erisque domo carens"
-];
-let jobs_it = [
-  "un dottore in",
-  "un narcotrafficante in",
-  "un assassino in",
-  "un ruffiano in",
-  "una prostituta in",
-  "il presidente di",
-  "il dittatore di",
-  "il re di",
-  "la regina di",
-  "l'imperatore di",
-  "l'imperatrice di",
-  "il Dalai Lama in",
-  "un contadino in",
-  "il papa in",
-  "un amministratore delegato in",
-  "un buffone in",
-  "un rapinatore in banca in",
-  "un istruttore di immersioni in",
-  "un maestro di sci in"
-];
-let geolocs_it = [
-  "Corea del Nord",
-  "nel Giappone",
-  "negli Stati Uniti",
-  "Germania",
-  "Italia",
-  "Finlandia",
-  "nel Sudafrica",
-  "Argentina",
-  "nel Messico",
-  "nel Vaticano",
-  "Australia",
-  "Thailandia",
-  "Cina",
-  "Arabia Saudita",
-  "Francia",
-  "Turchia",
-  "Russia",
-  "Svizzera",
-  "nel Nepal",
-  "nelle Maldive",
-  "nel Regno Unito",
-  "Ungheria",
-  "Polonia",
-  "Austria"
-];
-let partners_it = [
-  "un uomo",
-  "una donna",
-  "diversi uomini allo stesso tempo",
-  "diverse donne allo stesso tempo",
-  "diverse donne e uomini allo stesso tempo",
-  "nessuno",
-  "il tuo cane",
-  "il tuo gatto",
-  "il tuo criceto",
-  "il tuo pocellino d'India",
-  "il tuo maiale",
-  "la tua mucca",
-  "il tuo toro",
-  "il tuo orso",
-  "la tua tartaruga",
-  "la tua lepre",
-  "il tuo cavallo",
-  "la tua pecora",
-  "la tua capra",
-  "la tua professione"
-];
-let houses_it = [
-  "abiterai in una casa",
-  "abiterai in un appartamento",
-  "abiterai in un attico",
-  "abiterai in un gabinetto pubblico",
-  "abiterai in un castello",
-  "abiterai in un bordello",
-  "abiterai in una cella",
-  "abiterai in una tenda",
-  "abiterai in un roulotte",
-  "abiterai in una cabina del telefono",
-  "abiterai in una stalla",
-  "abiterai in una piscina",
-  "abiterai in una grotta",
-  "serai senza tetto"
-];
->>>>>>> 4908e2385b000de42a6910b44af01206d694597f
 function newFortune() {
   let lang = getLanguage();
   let jobnr = randomize(jobs);
