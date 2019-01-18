@@ -295,28 +295,28 @@ var geolocs = [
   { en: "Poland", de: "Polen", fr: "la Pologne", la: "in Polonia", it: "Polonia" },
   { en: "Austria", de: "Österreich", fr: "l'Autriche", la: "in Austria", it: "Austria" }
 ]
-let partners_engl = [
-  "a man",
-  "a woman",
-  "several men at the same time",
-  "several women at the same time",
-  "several women and men at the same time",
-  "no one",
-  "your dog",
-  "your cat",
-  "your hamster",
-  "your guinea-pig",
-  "your pig",
-  "your cow",
-  "your bull",
-  "your bear",
-  "your turtle",
-  "your bunny",
-  "your horse",
-  "your sheep",
-  "your goat",
-  "your job"
-];
+var partners = [
+  { en: "a man", de: "einem Mann", fr: "un homme", la: "viro", it: "un uomo" },
+  { en: "a woman", de: "einer Frau", fr: "une femme", la: "muliere", it: "una donna" },
+  { en: "several men at the same time", de: "mehreren Männern gleichzeitig", fr: "plusieurs hommes en même temps", la: "simul compluribus viris", it: "diversi uomini allo stesso tempo" },
+  { en: "several women at the same time", de: "mehreren Frauen gleichzeitig", fr: "plusieurs femmes en même temps", la: "simul compluribus mulieribus", it: "diverse donne allo stesso tempo" },
+  { en: "several women and men at the same time", de: "mehreren Frauen und Männern gleichzeitig", fr: "plusieurs femmes et hommes en même temps", la: "simul compluribus mulieribus virisque", it: "diversi donne e uomini allo stesso tempo" },
+  { en: "no one", de: "niemandem", fr: "personne", la: "nullo", it: "nessuno" },
+  { en: "your dog", de: "deinem Hund", fr: "ton chien", la: "cane tuo", it: "il tuo cane" },
+  { en: "your cat", de: "deiner Katze", fr: "ton chat", la: "fele tua", it: "il tuo gatto" },
+  { en: "your hamster", de: "deinem Hamster", fr: "ton hamster", la: "criceto tuo", it: "il tuo criceto" },
+  { en: "your guinea-pig", de: "deinem Meerschweinchen", fr: "ton cochon d'Inde", la: "cavia porcellus tua", it: "il tuo porcellino d'India" },
+  { en: "your pig", de: "deinem Schwein", fr: "ton cochon", la: "porco tuo", it: "il tuo maiale" },
+  { en: "your cow", de: "deiner Kuh", fr: "ta vache", la: "vacca tua", it: "la tua mucca" },
+  { en: "your bull", de: "deinem Stier", fr: "ton taureau", la: "tauro tuo", it: "il tuo toro" },
+  { en: "your bear", de: "deinem Bären", fr: "ton ours", la: "urso tuo", it: "il tuo orso" },
+  { en: "your turtle", de: "deiner Schildkröte", fr: "ta tortue", la: "testudine tuo", it: "la tua tartaruga" },
+  { en: "your bunny", de: "deinem Hasen", fr: "ton lièvre", la: "lepo tuo", it: "la tua lepre" },
+  { en: "your horse", de: "deinem Pferd", fr: "ton cheval", la: "equo tuo", it: "il tuo cavallo" },
+  { en: "your sheep", de: "deinem Schaf", fr: "ton mouton", la: "ove tua", it: "la tua pecora" },
+  { en: "your goat", de: "deiner Ziege", fr: "ta chèvre", la: "capra tua", it: "la tua capra" },
+  { en: "your job", de: "deinem Beruf", fr: "ta profession", la: "professione tua", it: "la tua professione" }
+]
 let houses_engl = [
   "in a house",
   "in a flat",
@@ -331,28 +331,6 @@ let houses_engl = [
   "in a swimming pool",
   "in a cave",
   "on the street"
-];
-let partners_germ = [
-  "einem Mann",
-  "einer Frau",
-  "mehreren Männern gleichzeitig",
-  "mehreren Frauen gleichzeitig",
-  "mehreren Frauen und Männern gleichzeitig",
-  "niemandem",
-  "deinem Hund",
-  "deiner Katze",
-  "deinem Hamster",
-  "deinem Meerschweinchen",
-  "deinem Schwein",
-  "deiner Kuh",
-  "deinem Stier",
-  "deinem Bären",
-  "deiner Schildkröte",
-  "deinem Hasen",
-  "deinem Pferd",
-  "deinem Schaf",
-  "deiner Ziege",
-  "deinem Beruf"
 ];
 let houses_germ = [
   "in einem Haus",
@@ -369,28 +347,6 @@ let houses_germ = [
   "in einer Höhle",
   "auf der Straße"
 ];
-let partners_fr = [
-  "un homme",
-  "une femme",
-  "plusieurs hommes en même temps",
-  "plusieurs femmes en même temps",
-  "plusieurs femmes et plusieurs hommes en même temps",
-  "personne",
-  "ton chien",
-  "ton chat",
-  "ton hamster",
-  "ton cochon d'Inde",
-  "ton cochon",
-  "ta vache",
-  "ton taureau",
-  "ton ours",
-  "ta tortue",
-  "ton lièvre",
-  "ton cheval",
-  "ton mouton",
-  "ta chèvre",
-  "ta profession"
-];
 let houses_fr = [
   "habiteras dans une maison",
   "habiteras dans un appartement",
@@ -406,27 +362,6 @@ let houses_fr = [
   "habiteras dans une grotte",
   "seras sans domicile fixe"
 ];
-let partners_la = [
-  "viro",
-  "muliere",
-  "simul compluribus viris",
-  "simul compluribus mulieribus",
-  "simul compluribus mulieribus virisque",
-  "nullo",
-  "cane tuo",
-  "fele tua",
-  "criceto tuo",
-  "cavia porcellus tua",
-  "porco tuo",
-  "bove tuo",
-  "urso tuo",
-  "testudine tua",
-  "lepo tuo",
-  "equo tuo",
-  "ove tua",
-  "capra tua",
-  "professione tua"
-];
 let houses_la = [
   "habitabisque in mansione",
   "habitabisque in domicilio",
@@ -441,28 +376,6 @@ let houses_la = [
   "habitabisque in thermae",
   "habitabisque in caverna",
   "erisque domo carens"
-];
-let partners_it = [
-  "un uomo",
-  "una donna",
-  "diversi uomini allo stesso tempo",
-  "diverse donne allo stesso tempo",
-  "diverse donne e uomini allo stesso tempo",
-  "nessuno",
-  "il tuo cane",
-  "il tuo gatto",
-  "il tuo criceto",
-  "il tuo pocellino d'India",
-  "il tuo maiale",
-  "la tua mucca",
-  "il tuo toro",
-  "il tuo orso",
-  "la tua tartaruga",
-  "la tua lepre",
-  "il tuo cavallo",
-  "la tua pecora",
-  "la tua capra",
-  "la tua professione"
 ];
 let houses_it = [
   "abiterai in una casa",
@@ -483,36 +396,31 @@ function newFortune() {
   let lang = getLanguage();
   let jobnr = randomize(jobs);
   let geonr = randomize(geolocs);
-  let partnr;
+  let partnr = randomize(partners);
   let housenr;
   let house;
   switch (lang) {
     case "de":
     case "de-DE":
     case "de-AT":
-      partnr = randomize(partners_germ);
       housenr = randomize(houses_germ);
       house = houses_germ[housenr];
       break;
     case "fr":
     case "fr-FR":
-      partnr = randomize(partners_fr);
       housenr = randomize(houses_fr);
       house = houses_fr[housenr];
       break;
     case "la":
-      partnr = randomize(partners_la);
       housenr = randomize(houses_la);
       house = houses_la[housenr];
       break;
     case "it":
     case "it-IT":
-      partnr = randomize(partners_it);
       housenr = randomize(houses_it);
       house = houses_it[housenr];
       break;
     default:
-      partnr = randomize(partners_engl);
       housenr = randomize(houses_engl);
       house = houses_engl[housenr];
   }
@@ -621,7 +529,7 @@ function newFortune() {
     case "de-DE":
       document.getElementById("fortune").innerHTML = fortune_germ(
         childnr,
-        partners_germ[partnr],
+        partners[partnr].de,
         geolocs[geonr].de,
         houses_germ[housenr],
         jobs[jobnr].de,
@@ -632,20 +540,20 @@ function newFortune() {
     case "fr-FR":
       document.getElementById("fortune").innerHTML = fortune_fr(
         childnr,
-        partners_fr[partnr],
-        geolocs[geonr].de,
+        partners[partnr].fr,
+        geolocs[geonr].fr,
         houses_fr[housenr],
-        jobs_fr[jobnr],
+        jobs[jobnr].fr,
         areanr
       );
       break;
     case "la":
       document.getElementById("fortune").innerHTML = fortune_la(
         childnr,
-        partners_la[partnr],
+        partners[partnr].la,
         geolocs[geonr].la,
         houses_la[housenr],
-        jobs_la[jobnr],
+        jobs[jobnr].la,
         areanr
       );
       break;
@@ -653,20 +561,20 @@ function newFortune() {
     case "it-IT":
       document.getElementById("fortune").innerHTML = fortune_it(
         childnr,
-        partners_it[partnr],
+        partners[partnr].it,
         geolocs[geonr].it,
         houses_it[housenr],
-        jobs_it[jobnr],
+        jobs[jobnr].it,
         areanr
       );
       break;
     default:
       document.getElementById("fortune").innerHTML = fortune_engl(
         childnr,
-        partners_engl[partnr],
+        partners[partnr].en,
         geolocs[geonr].en,
         houses_engl[housenr],
-        jobs_engl[jobnr],
+        jobs[jobnr].en,
         areanr
       );
   }
