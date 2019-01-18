@@ -1,10 +1,23 @@
 // Function to determine the language
 function getLanguage() {
   let LangSel = document.getElementById("language").value;
-  let lang;
+  let LangNav, lang;
   switch (LangSel) {
     case "from":
-      lang = navigator.language;
+      LangNav = navigator.language;
+      if (LangNav.startsWith("de")) {
+        lang = "de";
+      } else if (LangNav.startsWith("en")) {
+        lang = "en"
+      } else if (LangNav.startsWith("fr")) {
+        lang = "fr";
+      } else if (LangNav.startsWith("it")) {
+        lang = "it";
+      } else if (LangNav.startsWith("la")) {
+        lang = "la";
+      } else {
+        lang = "en";
+      }
       break;
     case "de":
       lang = "de";
