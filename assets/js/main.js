@@ -38,7 +38,7 @@ function getLanguage() {
   return lang;
 }
 // Function to create the English fortune sentence
-function fortune_engl(numch, partn, loc, house, job, area) {
+function fortune_en(numch, partn, loc, house, job, area) {
   let child =
     numch === 0 ? "no kids" : numch === 1 ? `${numch} kid` : `${numch} kids`;
   let sqm =
@@ -362,7 +362,7 @@ function newFortune() {
       );
       break;
     default:
-      document.getElementById("fortune").innerHTML = fortune_engl(
+      document.getElementById("fortune").innerHTML = fortune_en(
         childnr,
         partners[partnr].en,
         geolocs[geonr].en,
