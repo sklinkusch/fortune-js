@@ -138,7 +138,7 @@ function fortune_fr(numch, partn, loc, house, job, area) {
   }
   return `Tu seras ${job_ft} ${loc_ft}, tu seras ${marie} avec ${partn}, tu ${child} et tu ${house}${sqm}.`;
 };
-function fortune_la(numch, partn, loc, house, job, area) {
+function fortune_la(numch, partn, loc_abl, loc_gen, house, job, area) {
   let marie;
   if (/regina/.test(job) || /imperatoria/.test(job) || /prostituta/.test(job)) {
     marie = "nupta";
@@ -157,6 +157,7 @@ function fortune_la(numch, partn, loc, house, job, area) {
       : area > 1
         ? `${area} metrorum quadratorum`
         : "";
+  let loc = (job === "imperator" || job === "uxor imperatoria" || job === "rex" || job === "regina" || job === "praeses" || job === "dictator") ? loc_gen : loc_abl;
   return `Eris ${job} ${loc}, ${marie} cum ${partn}, tibi ${child} ${house} ${sqm}.`;
 };
 // Italian function
@@ -345,7 +346,8 @@ function newFortune() {
       document.getElementById("fortune").innerHTML = fortune_la(
         childnr,
         partners[partnr].la,
-        geolocs[geonr].la,
+        geolocs[geonr].la_abl,
+        geolocs[geonr].la_gen,
         houses[housenr].la,
         jobs[jobnr].la,
         areanr
