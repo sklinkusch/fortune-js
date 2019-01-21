@@ -395,7 +395,7 @@ function writeText() {
       document.getElementById("reload").value = "Oraculum novum";
       break;
     case "it":
-      document.getElementById("title").innerHTML = "🔮L'Avvenire tuo🔮";
+      document.getElementById("title").innerHTML = "🔮Il tuo futuro🔮";
       document.getElementById("subtitle").innerHTML =
         "Un gioco divinatorio allegro";
       document.getElementById("reload").value = "Prossima divinazione";
