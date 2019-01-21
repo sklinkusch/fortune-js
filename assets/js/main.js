@@ -48,9 +48,9 @@ function fortune_en(numch, partn, loc, house, job, area) {
     child = `${numch} kids`;
   }
   if (area === 1) {
-    sqm = `of ${area} square meter`;
+    sqm = ` of ${area} square meter`;
   } else if (area > 1) {
-    sqm = `of ${area} square meters`;
+    sqm = ` of ${area} square meters`;
   } else {
     sqm = "";
   }
@@ -58,22 +58,21 @@ function fortune_en(numch, partn, loc, house, job, area) {
 }
 // Function to create the German fortune sentence
 function fortune_de(numch, partn, loc, house, job, area) {
-  let child;
+  let child, sqm, job_ft, loc_ft;
   if (numch === 0) {
     child = "keine Kinder";
   } else if (numch === 1) {
     child = "ein Kind";
   } else {
-    `${numch} Kinder`;
+    child = `${numch} Kinder`;
   }
-  let sqm =
-    area === 1
-      ? " mit einem Quadratmeter Wohnfläche"
-      : area > 1
-      ? ` mit ${area} Quadratmetern Wohnfläche`
-      : "";
-  let job_ft;
-  let loc_ft;
+  if (area === 1) {
+    sqm = " mit einem Quadratmeter Wohnfläche";
+  } else if (area > 1) {
+    sqm = ` mit ${area} Quadratmetern Wohnfläche`;
+  } else {
+    sqm = "";
+  }
   if (
     /von/.test(job) &&
     (loc === "den Vereinigten Staaten von Amerika" ||
