@@ -105,10 +105,12 @@ function fortune_de(numch, partn, loc, house, job, area) {
 }
 // Function to create the French fortune sentence
 function fortune_fr(numch, partn, loc, house, job, area) {
-  let marie =
-    /reine/.test(job) || /impératrice/.test(job) || /prostituée/.test(job)
-      ? "mariée"
-      : "marié";
+  let marie;
+  if (/reine/.test(job) || /impératrice/.test(job) || /prostituée/.test(job)) {
+    marie = "mariée";
+  } else {
+    marie = "marié";
+  }
   let child =
     numch === 0
       ? `n'auras pas d'enfants`
