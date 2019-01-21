@@ -39,8 +39,14 @@ function getLanguage() {
 }
 // Function to create the English fortune sentence
 function fortune_en(numch, partn, loc, house, job, area) {
-  let child =
-    numch === 0 ? "no kids" : numch === 1 ? `${numch} kid` : `${numch} kids`;
+  let child;
+  if (numch === 0) {
+    child = "no kids";
+  } else if (numch === 1) {
+    child = `${numch} kid`;
+  } else {
+    child = `${numch} kids`;
+  }
   let sqm =
     area === 1
       ? ` of ${area} square meter`
