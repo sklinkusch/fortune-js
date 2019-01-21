@@ -817,7 +817,7 @@ var houses = [
     de: "auf der Straße",
     fr: "seras sans domicile fixe",
     la: "erisque domo carens",
-    it: "serai senza tetto",
+    it: "sarai senza tetto",
     min: 0,
     max: 1
   }
