@@ -39,7 +39,7 @@ function getLanguage() {
 }
 // Function to create the English fortune sentence
 function fortune_en(numch, partn, loc, house, job, area) {
-  let child;
+  let child, sqm;
   if (numch === 0) {
     child = "no kids";
   } else if (numch === 1) {
@@ -47,12 +47,13 @@ function fortune_en(numch, partn, loc, house, job, area) {
   } else {
     child = `${numch} kids`;
   }
-  let sqm =
-    area === 1
-      ? ` of ${area} square meter`
-      : area > 1
-      ? ` of ${area} square meters`
-      : "";
+  if (area === 1) {
+    sqm = `of ${area} square meter`;
+  } else if (area > 1) {
+    sqm = `of ${area} square meters`;
+  } else {
+    sqm = "";
+  }
   return `You will be ${job} ${loc}, married to ${partn} with ${child} living ${house}${sqm}.`;
 }
 // Function to create the German fortune sentence
