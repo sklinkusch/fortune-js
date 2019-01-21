@@ -58,8 +58,14 @@ function fortune_en(numch, partn, loc, house, job, area) {
 }
 // Function to create the German fortune sentence
 function fortune_de(numch, partn, loc, house, job, area) {
-  let child =
-    numch === 0 ? "keine Kinder" : numch === 1 ? "ein Kind" : `${numch} Kinder`;
+  let child;
+  if (numch === 0) {
+    child = "keine Kinder";
+  } else if (numch === 1) {
+    child = "ein Kind";
+  } else {
+    `${numch} Kinder`;
+  }
   let sqm =
     area === 1
       ? " mit einem Quadratmeter Wohnfläche"
