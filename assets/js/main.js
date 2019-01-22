@@ -153,7 +153,7 @@ function fortune_fr(numch, partn, loc, house, job, area) {
   return `Tu seras ${job_ft} ${loc_ft}, tu seras ${marie} avec ${partn}, tu ${child} et tu ${house}${sqm}.`;
 }
 function fortune_la(numch, partn, loc_abl, loc_gen, house, job, area) {
-  let marie, child, sqm;
+  let marie, child, sqm, loc;
   if (/regina/.test(job) || /imperatoria/.test(job) || /prostituta/.test(job)) {
     marie = "nupta";
   } else {
@@ -173,15 +173,18 @@ function fortune_la(numch, partn, loc_abl, loc_gen, house, job, area) {
   } else {
     sqm = "";
   }
-  let loc =
+  if (
     job === "imperator" ||
     job === "uxor imperatoria" ||
     job === "rex" ||
     job === "regina" ||
     job === "praeses" ||
     job === "dictator"
-      ? loc_gen
-      : loc_abl;
+  ) {
+    loc = loc_gen;
+  } else {
+    loc = loc_abl;
+  }
   return `Eris ${job} ${loc}, ${marie} cum ${partn}, tibi ${child} ${house}${sqm}.`;
 }
 // Italian function
