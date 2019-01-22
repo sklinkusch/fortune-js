@@ -189,7 +189,7 @@ function fortune_la(numch, partn, loc_abl, loc_gen, house, job, area) {
 }
 // Italian function
 function fortune_it(numch, partn, loc, house, job, area) {
-  let marie, child;
+  let marie, child, sqm, job_ft, loc_ft;
   if (/regina/.test(job) || /imperatrice/.test(job) || /prostituta/.test(job)) {
     marie = "sposata";
   } else {
@@ -202,14 +202,13 @@ function fortune_it(numch, partn, loc, house, job, area) {
   } else {
     child = `${numch} bambini`;
   }
-  let sqm =
-    area === 1
-      ? "di un metro quadrato"
-      : area > 1
-      ? `di ${area} metri quadrati`
-      : "";
-  let job_ft;
-  let loc_ft;
+  if (area === 1) {
+    sqm = " di un metro quadrato";
+  } else if (area > 1) {
+    sqm = ` di ${area} metri quadrati`;
+  } else {
+    sqm = "";
+  }
   if (job.endsWith("in") && loc.startsWith("nelle")) {
     job_ft = job.slice(0, -3);
     loc_ft = loc;
