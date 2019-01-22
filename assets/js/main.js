@@ -189,18 +189,19 @@ function fortune_la(numch, partn, loc_abl, loc_gen, house, job, area) {
 }
 // Italian function
 function fortune_it(numch, partn, loc, house, job, area) {
-  let marie;
+  let marie, child;
   if (/regina/.test(job) || /imperatrice/.test(job) || /prostituta/.test(job)) {
     marie = "sposata";
   } else {
     marie = "sposato";
   }
-  let child =
-    numch === 0
-      ? "alcuno bambino"
-      : numch === 1
-      ? "un bambino"
-      : `${numch} bambini`;
+  if (numch === 0) {
+    child = "alcuno bambino";
+  } else if (numch === 1) {
+    child = "un bambino";
+  } else {
+    child = `${numch} bambini`;
+  }
   let sqm =
     area === 1
       ? "di un metro quadrato"
