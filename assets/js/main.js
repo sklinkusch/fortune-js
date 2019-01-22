@@ -105,7 +105,7 @@ function fortune_de(numch, partn, loc, house, job, area) {
 }
 // Function to create the French fortune sentence
 function fortune_fr(numch, partn, loc, house, job, area) {
-  let marie, child;
+  let marie, child, sqm, job_ft, loc_ft;
   if (/reine/.test(job) || /impératrice/.test(job) || /prostituée/.test(job)) {
     marie = "mariée";
   } else {
@@ -118,14 +118,13 @@ function fortune_fr(numch, partn, loc, house, job, area) {
   } else {
     child = `auras ${numch} enfants`;
   }
-  let sqm =
-    area === 1
-      ? ` d'un mètre carré`
-      : area > 1
-      ? ` de ${area} mètres carré`
-      : "";
-  let job_ft;
-  let loc_ft;
+  if (area === 1) {
+    sqm = ` d'un mètre carré`;
+  } else if (area > 1) {
+    sqm = ` de ${area} mètres carré`;
+  } else {
+    sqm = "";
+  }
   if (job.endsWith("en") && loc.startsWith("la")) {
     job_ft = job;
     loc_ft = loc.substring(3);
