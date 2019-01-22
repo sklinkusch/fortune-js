@@ -153,7 +153,7 @@ function fortune_fr(numch, partn, loc, house, job, area) {
   return `Tu seras ${job_ft} ${loc_ft}, tu seras ${marie} avec ${partn}, tu ${child} et tu ${house}${sqm}.`;
 }
 function fortune_la(numch, partn, loc_abl, loc_gen, house, job, area) {
-  let marie, child;
+  let marie, child, sqm;
   if (/regina/.test(job) || /imperatoria/.test(job) || /prostituta/.test(job)) {
     marie = "nupta";
   } else {
@@ -166,12 +166,13 @@ function fortune_la(numch, partn, loc_abl, loc_gen, house, job, area) {
   } else {
     child = `erunt ${numch} filii`;
   }
-  let sqm =
-    area == 1
-      ? " unius metri quadrati"
-      : area > 1
-      ? ` ${area} metrorum quadratorum`
-      : "";
+  if (area === 1) {
+    sqm = " unius metri quadrati";
+  } else if (area > 1) {
+    sqm = ` ${area} metrorum quadratorum`;
+  } else {
+    sqm = "";
+  }
   let loc =
     job === "imperator" ||
     job === "uxor imperatoria" ||
