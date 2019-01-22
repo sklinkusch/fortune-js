@@ -189,10 +189,12 @@ function fortune_la(numch, partn, loc_abl, loc_gen, house, job, area) {
 }
 // Italian function
 function fortune_it(numch, partn, loc, house, job, area) {
-  let marie =
-    /regina/.test(job) || /imperatrice/.test(job) || /prostituta/.test(job)
-      ? "sposata"
-      : "sposato";
+  let marie;
+  if (/regina/.test(job) || /imperatrice/.test(job) || /prostituta/.test(job)) {
+    marie = "sposata";
+  } else {
+    marie = "sposato";
+  }
   let child =
     numch === 0
       ? "alcuno bambino"
