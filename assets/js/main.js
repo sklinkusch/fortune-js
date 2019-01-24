@@ -938,3 +938,9 @@ function writeText() {
       document.getElementById("reload").value = "New prophecy";
   }
 }
+writeText();
+newFortune();
+document.getElementById("reload").addEventListener("click", onclick => {
+  writeText();
+  newFortune();
+});
